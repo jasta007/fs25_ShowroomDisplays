@@ -41,7 +41,7 @@
   </Materials>
 
 
-  <Shapes externalShapesFile="plinthRamp.i3d.shapes">
+  <Shapes externalShapesFile="displayRamp.i3d.shapes">
   </Shapes>
 
   <Scene>

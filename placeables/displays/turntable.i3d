@@ -45,7 +45,7 @@
   </Materials>
 
 
-  <Shapes externalShapesFile="plinthTurntable.i3d.shapes">
+  <Shapes externalShapesFile="turntable.i3d.shapes">
   </Shapes>
 
   <Scene>
