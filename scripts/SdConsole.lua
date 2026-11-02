@@ -87,23 +87,36 @@ function SdConsole:testModel()
     -- stand the copy on the disc as high above it as the machine stands above the ground
     local vx, vy, vz = getWorldTranslation(vehicle.rootNode)
     local ground = g_terrainNode ~= nil and getTerrainHeightAtWorldPos(g_terrainNode, vx, 0, vz) or vy
-    local node = createTransformGroup("sdTestModel")
-    link(getRootNode(), node)
-    setWorldTranslation(node, vx, vy, vz)
-    setWorldQuaternion(node, getWorldQuaternion(vehicle.rootNode))
-    local copies = {}
+    -- a machine's skin (its body mesh) is bound to bones in several components: clone them as one
+    -- tree, or the skin can't find its bones. Gather them under a group at the world origin (their
+    -- world placing stays the same), clone that, and give them straight back.
+    local gather = createTransformGroup("sdGather")
+    link(getRootNode(), gather)
+    local parts = {}
     for _, component in ipairs(vehicle.components or { { node = vehicle.rootNode } }) do
-        local copy = clone(component.node, false, false, false)
-        link(node, copy)
-        setWorldTranslation(copy, getWorldTranslation(component.node))
-        setWorldQuaternion(copy, getWorldQuaternion(component.node))
-        table.insert(copies, copy)
+        table.insert(parts, { node = component.node, parent = getParent(component.node) })
+        link(gather, component.node)
     end
+    local node = clone(gather, false, false, false)
+    for _, part in ipairs(parts) do link(part.parent, part.node) end
+    delete(gather)
+    setName(node, "sdTestModel")
+    link(getRootNode(), node)
+    local copies = {}
+    for i = 0, getNumOfChildren(node) - 1 do table.insert(copies, getChildAt(node, i)) end
+    -- the copy's origin under the machine, so moving it stands the machine on the disc
+    local function shift(dx, dy, dz)
+        for _, copy in ipairs(copies) do
+            local cx, cy, cz = getWorldTranslation(copy)
+            setTranslation(copy, cx - dx, cy - dy, cz - dz)
+        end
+    end
+    shift(vx, vy, vz)
     local entry = SdTurntable.tables[turntable.rootNode]
     local x, y, z = getWorldTranslation(turntable.rootNode)
     local areas = SdDisplays.areasFor(turntable.configFileName)
     local top = y + (areas ~= nil and areas[1].y or 0.7)
-    setWorldTranslation(node, x, top + math.max(vy - ground, 0) + 0.02, z)
+    setTranslation(node, x, top + math.max(vy - ground, 0) + 0.02, z)
     -- a showroom model's parts are static, not the dynamic parts a machine is built from
     local function makeStatic(n)
         if getRigidBodyType ~= nil and RigidBodyType ~= nil then

@@ -195,7 +195,10 @@ function SdDisplays.isMapPlaced(placeable)
     if type(placeable) ~= "table" then return false end
     if SdDisplays.testMapPlaced[placeable] then return true end
     if placeable.mapBoundId ~= nil then return true end
-    if placeable.isPreplaced ~= nil then return placeable.isPreplaced == true end
+    if placeable.isPreplaced == true then return true end
+    -- a map's placeables list usually gives deco no farm: nobody bought it, the map put it there
+    local farmId = placeable.getOwnerFarmId ~= nil and placeable:getOwnerFarmId() or nil
+    if farmId ~= nil and SdTurntable ~= nil and not SdTurntable.isPlayerFarm(farmId) then return true end
     return false
 end
 

@@ -281,7 +281,10 @@ local function takeHits(entry)
     if entry.hits == nil or next(entry.hits) == nil then return end
     local hits = entry.hits
     entry.hits = {}
+    local count, before = 0, 0
+    for _ in pairs(entry.props) do before = before + 1 end
     for hit in pairs(hits) do
+        count = count + 1
         local model = (entityExists == nil or entityExists(hit)) and SdTurntable.modelRoot(entry, hit, entry.avoid or {}) or nil
         if model ~= nil and entry.props[model] == nil then
             local x, y, z = getWorldTranslation(model)
@@ -299,6 +302,11 @@ local function takeHits(entry)
             entry.props[model] = prop
             Log:info("turntable: a model (%s) turns with the disc", tostring(getName(model)))
         end
+    end
+    local after = 0
+    for _ in pairs(entry.props) do after = after + 1 end
+    if after == before then
+        Log:info("turntable: %d shapes over the disc, none of them a model", count)
     end
 end
 
