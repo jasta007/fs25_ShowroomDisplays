@@ -1,17 +1,79 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <modDesc descVersion="115">
     <author>Jasta007</author>
-    <version>0.1.0.0</version>
+    <version>1.0.0.0</version>
     <title>
         <en>Showroom Displays</en>
     </title>
     <description>
-        <en>
-            <![CDATA[Display stands to show off your machines: a drive-through display, display ramps, a platform display ramp and a slowly turning turntable. Find them under Decorations.]]>
-        </en>
-        <de>
-            <![CDATA[Präsentationsstände für Ihre Maschinen: ein Durchfahr-Podest, Präsentationsrampen, eine Plattform-Präsentationsrampe und ein langsam drehender Drehteller. Zu finden unter Dekoration.]]>
-        </de>
+        <en><![CDATA[Display stands to show off your machines, for farms, dealerships and maps.
+
+- The boards show the brand of the machine on display, in that brand's colour
+- Options: Colour, Finish (plaster, wood or dark metal) and, for turntables, Spin speed
+- Turntables turn slowly with the machine on them
+- Multiplayer ready
+
+Map makers: displays placed with your map lock machines of no farm and turn static models on the turntable.
+
+Drive-Through Display
+Category: Decoration
+Price: $8,000
+
+Display Ramp
+Category: Decoration
+Price: $5,000
+
+Large Display Ramp
+Category: Decoration
+Price: $7,500
+
+Platform Display Ramp
+Category: Decoration
+Price: $6,000
+
+Turntable
+Category: Decoration
+Price: $25,000
+
+Small Turntable
+Category: Decoration
+Price: $18,000
+
+Made by Jasta007.]]></en>
+        <de><![CDATA[Präsentationsstände für Ihre Maschinen, für Höfe, Händler und Karten.
+
+- Die Schilder zeigen die Marke der ausgestellten Maschine in ihrer Markenfarbe
+- Optionen: Farbe, Oberfläche (Putz, Holz oder dunkles Metall) und bei Drehtellern die Drehgeschwindigkeit
+- Drehteller drehen sich langsam mit der Maschine darauf
+- Mehrspielerfähig
+
+Kartenbauer: Mit der Karte platzierte Stände sperren Maschinen ohne Hof und drehen statische Modelle auf dem Drehteller.
+
+Durchfahr-Podest
+Shopkategorie: Dekorationen
+Preis: 8.000€
+
+Präsentationsrampe
+Shopkategorie: Dekorationen
+Preis: 5.000€
+
+Große Präsentationsrampe
+Shopkategorie: Dekorationen
+Preis: 7.500€
+
+Plattform-Präsentationsrampe
+Shopkategorie: Dekorationen
+Preis: 6.000€
+
+Drehteller
+Shopkategorie: Dekorationen
+Preis: 25.000€
+
+Kleiner Drehteller
+Shopkategorie: Dekorationen
+Preis: 18.000€
+
+Von Jasta007.]]></de>
     </description>
     <iconFilename>icon_ShowroomDisplays.dds</iconFilename>
     <multiplayer supported="true"/>

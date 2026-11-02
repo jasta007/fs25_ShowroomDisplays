@@ -15,7 +15,7 @@
     from the game's own logo image; "eqBoardFace" shapes behind them go dark for a pale logo;
     "eqPaint" shapes take the Colour bought, or the brand's colour.
     The brand shown: another mod's choice (Realistic Equestrian's sponsor, see the API below), else
-    the brand of the machine on show, else a brand picked for that spot.
+    the brand of the machine on show (or of a map's model on a turntable), else a brand picked for that spot.
 
     API for other mods, on g_currentMission.showroomDisplays (set at mission load):
         isDisplay(placeable)          true for one of ours
@@ -187,10 +187,18 @@ end
 
 
 --- @return boolean true for a display that came with the map (not bought by a player)
+SdDisplays.testMapPlaced = {}   -- placeable -> true: sdMapDisplay, to try a map's display in any save
+SdDisplays.locked = {}          -- vehicle -> true: on show on a display that came with the map
+
+
 function SdDisplays.isMapPlaced(placeable)
     if type(placeable) ~= "table" then return false end
+    if SdDisplays.testMapPlaced[placeable] then return true end
     if placeable.mapBoundId ~= nil then return true end
-    if placeable.isPreplaced ~= nil then return placeable.isPreplaced == true end
+    if placeable.isPreplaced == true then return true end
+    -- a map's placeables list usually gives deco no farm: nobody bought it, the map put it there
+    local farmId = placeable.getOwnerFarmId ~= nil and placeable:getOwnerFarmId() or nil
+    if farmId ~= nil and SdTurntable ~= nil and not SdTurntable.isPlayerFarm(farmId) then return true end
     return false
 end
 
@@ -265,6 +273,8 @@ function SdDisplays.brandOf(placeable)
         local brand = SdBrands.of(vehicle)
         if brand ~= nil then return brand end
     end
+    local modelBrand = SdTurntable ~= nil and SdTurntable.modelBrandOn ~= nil and SdTurntable.modelBrandOn(placeable) or nil
+    if modelBrand ~= nil then return modelBrand end
     local _, names = SdBrands.all()
     local x, _, z = getWorldTranslation(placeable.rootNode)
     return SdBrands.pick(names, x, z)
@@ -374,6 +384,31 @@ local function wake(vehicle)
 end
 
 
+--- Keep players out of a locked machine. The game copies a vehicle type's functions into each
+--- machine, so this wraps the machine's own: no "enter" prompt (the walk-up prompt comes from
+--- getDistanceToNode, not getIsEnterable) and no entering from the vehicle list.
+function SdDisplays.guard(vehicle)
+    if vehicle.sdGuarded or vehicle.spec_enterable == nil then return end
+    vehicle.sdGuarded = true
+    for _, name in ipairs({ "getIsEnterable", "getIsEnterableFromMenu" }) do
+        local original = vehicle[name]
+        if type(original) == "function" then
+            vehicle[name] = function(self, ...)
+                if SdDisplays.isLocked(self) then return false end
+                return original(self, ...)
+            end
+        end
+    end
+    local distance = vehicle.getDistanceToNode
+    if type(distance) == "function" then
+        vehicle.getDistanceToNode = function(self, ...)
+            if SdDisplays.isLocked(self) then return math.huge end
+            return distance(self, ...)
+        end
+    end
+end
+
+
 function SdDisplays.update()
     local now = g_time or 0
     if g_currentMission ~= nil and g_currentMission.showroomDisplays == nil then g_currentMission.showroomDisplays = SdDisplays.api end
@@ -384,13 +419,21 @@ function SdDisplays.update()
     end
     if SdDisplays.scannedAt ~= nil and now - SdDisplays.scannedAt < SdDisplays.SCAN_MS and now >= SdDisplays.scannedAt then return end
     SdDisplays.scannedAt = now
-    local seen = {}
+    local seen, locked = {}, {}
     for _, placeable in ipairs(placeables()) do
         if SdDisplays.isDisplay(placeable) then
             seen[placeable] = true
             SdLog.try("display look", SdDisplays.apply, placeable)
+            if SdDisplays.isMapPlaced(placeable) then
+                for _, vehicle in ipairs(SdDisplays.parked(placeable)) do
+                    local farmId = vehicle.getOwnerFarmId ~= nil and vehicle:getOwnerFarmId() or nil
+                    if SdTurntable == nil or not SdTurntable.isPlayerFarm(farmId) then locked[vehicle] = true end
+                end
+            end
         end
     end
+    SdDisplays.locked = locked
+    for vehicle in pairs(locked) do SdDisplays.guard(vehicle) end
     -- the shop's preview while placing one
     local gui = g_gui ~= nil and g_gui.currentGui or nil
     local target = gui ~= nil and gui.target or nil
@@ -408,6 +451,16 @@ function SdDisplays.update()
 end
 
 
+--- @return boolean whether nobody may get into the machine: it is on show on a display that came
+--- with the map and belongs to no player's farm
+function SdDisplays.isLocked(vehicle)
+    if vehicle == nil then return false end
+    local root = vehicle.rootVehicle or vehicle
+    if SdDisplays.locked[vehicle] or SdDisplays.locked[root] then return true end
+    return SdTurntable ~= nil and SdTurntable.isLocked(vehicle) or false
+end
+
+
 SdDisplays.api = {
     isDisplay = function(p) return SdDisplays.isDisplay(p) end,
     isMapPlaced = function(p) return SdDisplays.isMapPlaced(p) end,
@@ -415,6 +468,7 @@ SdDisplays.api = {
     brandOf = function(p) return SdDisplays.brandOf(p) end,
     setOverride = function(p, brand, colour) SdDisplays.setOverride(p, brand, colour) end,
     areasFor = function(filename) return SdDisplays.areasFor(filename) end,
+    isLocked = function(vehicle) return SdDisplays.isLocked(vehicle) end,
 }
 
 
@@ -447,5 +501,6 @@ function SdDisplays.install()
     end)
     FSBaseMission.delete = Utils.prependedFunction(FSBaseMission.delete, function()
         SdDisplays.state, SdDisplays.overrides, SdDisplays.waking, SdDisplays.scannedAt = {}, {}, {}, nil
+        SdDisplays.testMapPlaced, SdDisplays.locked = {}, {}
     end)
 end

@@ -1,8 +1,8 @@
 --[[
     SdLog.lua
-    Logging, and the mod's one pcall: every protected call goes through SdLog.try, so a caught
-    error is always logged (GIANTS' TestRunner flags a bare pcall). Each context logs its first
-    failure in full, then only every 1000th, since some run every frame.
+    Logging. SdLog.try names each hooked call; it no longer catches errors (GIANTS' TestRunner
+    rejects pcall, so an error reaches the log with its stack trace). Each context's reported
+    failures are logged in full the first time, then only every 1000th.
 
     Part of Showroom Displays by Jasta007.
 ]]
@@ -22,7 +22,7 @@ function SdLog:info(fmt, ...) emit("Info: ", fmt, ...) end
 local failures = {}
 
 local function protected(fn, ...)
-    return pcall(fn, ...)
+    return true, fn(...)
 end
 
 local function finish(context, ok, ...)
@@ -38,9 +38,9 @@ local function finish(context, ok, ...)
     return ok, ...
 end
 
---- Call fn(...), logging a failure instead of raising it.
+--- Call fn(...). Errors are not caught: they go to the log with the game's stack trace.
 --- @param context string
---- @return boolean ok, ... fn's results, as pcall gives them
+--- @return boolean ok, ... true, then fn's results
 function SdLog.try(context, fn, ...)
     return finish(context, protected(fn, ...))
 end

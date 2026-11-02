@@ -13,7 +13,7 @@ import etcpak
 import numpy as np
 from PIL import Image
 
-MARK = b"Realistic Equestrian by Jasta007"
+MARK = b"Showroom Displays by Jasta007"
 
 DDSD_CAPS, DDSD_HEIGHT, DDSD_WIDTH, DDSD_PIXELFORMAT = 0x1, 0x2, 0x4, 0x1000
 DDSD_MIPMAPCOUNT, DDSD_LINEARSIZE = 0x20000, 0x80000
@@ -73,6 +73,16 @@ def save_dxt1(image, path):
             f.write(data)
 
 
+def save_dxt1_flat(image, path):
+    """A mod icon: DXT1, one level, no mipmaps (GIANTS TestRunner)."""
+    rgba = _rgba(image)
+    height, width = rgba.shape[:2]
+    data = _blocks(rgba, etcpak.compress_bc1)
+    with open(path, "wb") as f:
+        f.write(_header(width, height, len(data), 1, b"DXT1"))
+        f.write(data)
+
+
 def save_dxt5(image, path):
     """An image with see-through parts (wardrobe icons): DXT5, one level. BC7 icons came out as
     "undefined channel count, assuming 3 channels" and lose their alpha."""
@@ -82,6 +92,24 @@ def save_dxt5(image, path):
     with open(path, "wb") as f:
         f.write(_header(width, height, len(data), 1, b"DXT5"))
         f.write(data)
+
+
+def save_dxt5_mips(image, path):
+    """A 3D texture with see-through parts (the logo placeholder): DXT5 with every mip level."""
+    top = Image.fromarray(_rgba(image), "RGBA")
+    width, height = top.size
+    levels = []
+    w, h = width, height
+    while True:
+        level = top if (w, h) == (width, height) else top.resize((w, h), Image.LANCZOS)
+        levels.append(_blocks(np.asarray(level), etcpak.compress_bc3))
+        if w == 1 and h == 1:
+            break
+        w, h = max(1, w // 2), max(1, h // 2)
+    with open(path, "wb") as f:
+        f.write(_header(width, height, len(levels[0]), len(levels), b"DXT5"))
+        for data in levels:
+            f.write(data)
 
 
 def save_bc7(image, path):
