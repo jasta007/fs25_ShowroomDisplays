@@ -4,7 +4,7 @@
         <text name="sd_shop_driveThrough" text="Průjezdný podstavec"/>
         <text name="sd_shop_displayRamp" text="Výstavní rampa"/>
         <text name="sd_shop_displayRampLarge" text="Velká výstavní rampa"/>
-        <text name="sd_shop_productRamp" text="Rampa skoku s produktem"/>
+        <text name="sd_shop_productRamp" text="Výstavní rampa s plošinou"/>
         <text name="sd_shop_turntable" text="Otočná plošina"/>
         <text name="sd_function_display" text="Výstavní stojan, na který zaparkuješ stroj a předvedeš ho."/>
         <text name="sd_function_turntable" text="Kotouč se pomalu otáčí: nech na něm stroj a bude se otáčet s ním, i se vším připojeným."/>

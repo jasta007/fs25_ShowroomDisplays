@@ -4,7 +4,7 @@
         <text name="sd_shop_driveThrough" text="Podium traversant"/>
         <text name="sd_shop_displayRamp" text="Rampe d'exposition"/>
         <text name="sd_shop_displayRampLarge" text="Grande rampe d'exposition"/>
-        <text name="sd_shop_productRamp" text="Rampe d'obstacle produit"/>
+        <text name="sd_shop_productRamp" text="Rampe d'exposition à plateforme"/>
         <text name="sd_shop_turntable" text="Plateau tournant"/>
         <text name="sd_function_display" text="Un support d&#x27;exposition pour garer une machine et la mettre en valeur."/>
         <text name="sd_function_turntable" text="Le plateau tourne lentement : laissez-y une machine et elle tourne avec lui, avec tout ce qui est attelé."/>

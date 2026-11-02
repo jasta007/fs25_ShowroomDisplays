@@ -4,7 +4,7 @@
         <text name="sd_shop_driveThrough" text="Durchfahr-Podest"/>
         <text name="sd_shop_displayRamp" text="Präsentationsrampe"/>
         <text name="sd_shop_displayRampLarge" text="Große Präsentationsrampe"/>
-        <text name="sd_shop_productRamp" text="Produkt-Sprungrampe"/>
+        <text name="sd_shop_productRamp" text="Plattform-Präsentationsrampe"/>
         <text name="sd_shop_turntable" text="Drehteller"/>
         <text name="sd_function_display" text="Ein Präsentationsstand, auf dem Sie eine Maschine abstellen und zur Schau stellen."/>
         <text name="sd_function_turntable" text="Die Scheibe dreht sich langsam: Lass eine Maschine darauf stehen, dann dreht sie sich mit, samt allem Angehängten."/>

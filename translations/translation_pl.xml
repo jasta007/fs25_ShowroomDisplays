@@ -4,7 +4,7 @@
         <text name="sd_shop_driveThrough" text="Podest przejazdowy"/>
         <text name="sd_shop_displayRamp" text="Rampa wystawowa"/>
         <text name="sd_shop_displayRampLarge" text="Duża rampa wystawowa"/>
-        <text name="sd_shop_productRamp" text="Rampa skoku z produktem"/>
+        <text name="sd_shop_productRamp" text="Rampa wystawowa z platformą"/>
         <text name="sd_shop_turntable" text="Obrotowy podest"/>
         <text name="sd_function_display" text="Stoisko wystawowe, na którym zaparkujesz maszynę i ją zaprezentujesz."/>
         <text name="sd_function_turntable" text="Tarcza obraca się powoli: zostaw na niej maszynę, a obróci się razem z nią, z wszystkim, co podczepione."/>
