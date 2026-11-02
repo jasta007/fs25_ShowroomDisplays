@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <texts>
+        <text name="sd_shop_driveThrough" text="Podest przejazdowy"/>
+        <text name="sd_shop_displayRamp" text="Rampa wystawowa"/>
+        <text name="sd_shop_displayRampLarge" text="Duża rampa wystawowa"/>
+        <text name="sd_shop_productRamp" text="Rampa wystawowa z platformą"/>
+        <text name="sd_shop_turntable" text="Obrotowy podest"/>
+        <text name="sd_function_display" text="Stoisko wystawowe, na którym zaparkujesz maszynę i ją zaprezentujesz."/>
+        <text name="sd_function_turntable" text="Tarcza obraca się powoli: zostaw na niej maszynę, a obróci się razem z nią, z wszystkim, co podczepione."/>
+        <text name="sd_config_colour" text="Kolor"/>
+        <text name="sd_colour_brand" text="Kolor marki"/>
+        <text name="sd_config_spin" text="Prędkość obrotu"/>
+        <text name="sd_spin_off" text="Wył."/>
+        <text name="sd_spin_slow" text="Wolno"/>
+        <text name="sd_spin_medium" text="Średnio"/>
+        <text name="sd_spin_fast" text="Szybko"/>
+        <text name="sd_colour_white" text="Biały"/>
+        <text name="sd_colour_cream" text="Kremowy"/>
+        <text name="sd_colour_red" text="Czerwony"/>
+        <text name="sd_colour_burgundy" text="Bordowy"/>
+        <text name="sd_colour_orange" text="Pomarańczowy"/>
+        <text name="sd_colour_yellow" text="Żółty"/>
+        <text name="sd_colour_lime" text="Limonkowy"/>
+        <text name="sd_colour_green" text="Zielony"/>
+        <text name="sd_colour_darkGreen" text="Ciemnozielony"/>
+        <text name="sd_colour_skyBlue" text="Błękitny"/>
+        <text name="sd_colour_blue" text="Niebieski"/>
+        <text name="sd_colour_navy" text="Granatowy"/>
+        <text name="sd_colour_purple" text="Fioletowy"/>
+        <text name="sd_colour_pink" text="Różowy"/>
+        <text name="sd_colour_grey" text="Szary"/>
+        <text name="sd_colour_black" text="Czarny"/>
+        <text name="sd_shop_turntableSmall" text="Mała obrotnica"/>
+        <text name="sd_config_finish" text="Wykończenie"/>
+        <text name="sd_finish_plaster" text="Tynk"/>
+        <text name="sd_finish_wood" text="Drewno"/>
+        <text name="sd_finish_metal" text="Ciemny metal"/>
+    </texts>
+</l10n>

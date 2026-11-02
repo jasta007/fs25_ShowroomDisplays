@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <texts>
+        <text name="sd_shop_driveThrough" text="Podium traversant"/>
+        <text name="sd_shop_displayRamp" text="Rampe d'exposition"/>
+        <text name="sd_shop_displayRampLarge" text="Grande rampe d'exposition"/>
+        <text name="sd_shop_productRamp" text="Rampe d'exposition à plateforme"/>
+        <text name="sd_shop_turntable" text="Plateau tournant"/>
+        <text name="sd_function_display" text="Un support d&#x27;exposition pour garer une machine et la mettre en valeur."/>
+        <text name="sd_function_turntable" text="Le plateau tourne lentement : laissez-y une machine et elle tourne avec lui, avec tout ce qui est attelé."/>
+        <text name="sd_config_colour" text="Couleur"/>
+        <text name="sd_colour_brand" text="Couleur de la marque"/>
+        <text name="sd_config_spin" text="Vitesse de rotation"/>
+        <text name="sd_spin_off" text="Arrêt"/>
+        <text name="sd_spin_slow" text="Lente"/>
+        <text name="sd_spin_medium" text="Moyenne"/>
+        <text name="sd_spin_fast" text="Rapide"/>
+        <text name="sd_colour_white" text="Blanc"/>
+        <text name="sd_colour_cream" text="Crème"/>
+        <text name="sd_colour_red" text="Rouge"/>
+        <text name="sd_colour_burgundy" text="Bordeaux"/>
+        <text name="sd_colour_orange" text="Orange"/>
+        <text name="sd_colour_yellow" text="Jaune"/>
+        <text name="sd_colour_lime" text="Vert citron"/>
+        <text name="sd_colour_green" text="Vert"/>
+        <text name="sd_colour_darkGreen" text="Vert foncé"/>
+        <text name="sd_colour_skyBlue" text="Bleu ciel"/>
+        <text name="sd_colour_blue" text="Bleu"/>
+        <text name="sd_colour_navy" text="Bleu marine"/>
+        <text name="sd_colour_purple" text="Violet"/>
+        <text name="sd_colour_pink" text="Rose"/>
+        <text name="sd_colour_grey" text="Gris"/>
+        <text name="sd_colour_black" text="Noir"/>
+        <text name="sd_shop_turntableSmall" text="Petit plateau tournant"/>
+        <text name="sd_config_finish" text="Finition"/>
+        <text name="sd_finish_plaster" text="Enduit"/>
+        <text name="sd_finish_wood" text="Bois"/>
+        <text name="sd_finish_metal" text="Métal sombre"/>
+    </texts>
+</l10n>

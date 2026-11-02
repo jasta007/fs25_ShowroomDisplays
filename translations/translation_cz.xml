@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <texts>
+        <text name="sd_shop_driveThrough" text="Průjezdný podstavec"/>
+        <text name="sd_shop_displayRamp" text="Výstavní rampa"/>
+        <text name="sd_shop_displayRampLarge" text="Velká výstavní rampa"/>
+        <text name="sd_shop_productRamp" text="Výstavní rampa s plošinou"/>
+        <text name="sd_shop_turntable" text="Otočná plošina"/>
+        <text name="sd_function_display" text="Výstavní stojan, na který zaparkuješ stroj a předvedeš ho."/>
+        <text name="sd_function_turntable" text="Kotouč se pomalu otáčí: nech na něm stroj a bude se otáčet s ním, i se vším připojeným."/>
+        <text name="sd_config_colour" text="Barva"/>
+        <text name="sd_colour_brand" text="Barva značky"/>
+        <text name="sd_config_spin" text="Rychlost otáčení"/>
+        <text name="sd_spin_off" text="Vypnuto"/>
+        <text name="sd_spin_slow" text="Pomalu"/>
+        <text name="sd_spin_medium" text="Středně"/>
+        <text name="sd_spin_fast" text="Rychle"/>
+        <text name="sd_colour_white" text="Bílá"/>
+        <text name="sd_colour_cream" text="Krémová"/>
+        <text name="sd_colour_red" text="Červená"/>
+        <text name="sd_colour_burgundy" text="Vínová"/>
+        <text name="sd_colour_orange" text="Oranžová"/>
+        <text name="sd_colour_yellow" text="Žlutá"/>
+        <text name="sd_colour_lime" text="Limetková"/>
+        <text name="sd_colour_green" text="Zelená"/>
+        <text name="sd_colour_darkGreen" text="Tmavě zelená"/>
+        <text name="sd_colour_skyBlue" text="Nebeská modrá"/>
+        <text name="sd_colour_blue" text="Modrá"/>
+        <text name="sd_colour_navy" text="Námořnická modrá"/>
+        <text name="sd_colour_purple" text="Fialová"/>
+        <text name="sd_colour_pink" text="Růžová"/>
+        <text name="sd_colour_grey" text="Šedá"/>
+        <text name="sd_colour_black" text="Černá"/>
+        <text name="sd_shop_turntableSmall" text="Malá otočná plošina"/>
+        <text name="sd_config_finish" text="Povrch"/>
+        <text name="sd_finish_plaster" text="Omítka"/>
+        <text name="sd_finish_wood" text="Dřevo"/>
+        <text name="sd_finish_metal" text="Tmavý kov"/>
+    </texts>
+</l10n>

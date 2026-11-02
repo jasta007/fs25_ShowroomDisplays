@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <texts>
+        <text name="sd_shop_driveThrough" text="Plataforma de passagem"/>
+        <text name="sd_shop_displayRamp" text="Rampa de exposição"/>
+        <text name="sd_shop_displayRampLarge" text="Rampa de exposição grande"/>
+        <text name="sd_shop_productRamp" text="Rampa de exposição com plataforma"/>
+        <text name="sd_shop_turntable" text="Plataforma giratória"/>
+        <text name="sd_function_display" text="Um expositor para estacionar uma máquina e exibi-la."/>
+        <text name="sd_function_turntable" text="O disco gira devagar: deixe uma máquina sobre ele e ela gira junto, com tudo o que estiver engatado."/>
+        <text name="sd_config_colour" text="Cor"/>
+        <text name="sd_colour_brand" text="Cor da marca"/>
+        <text name="sd_config_spin" text="Velocidade de giro"/>
+        <text name="sd_spin_off" text="Desligado"/>
+        <text name="sd_spin_slow" text="Lenta"/>
+        <text name="sd_spin_medium" text="Média"/>
+        <text name="sd_spin_fast" text="Rápida"/>
+        <text name="sd_colour_white" text="Branco"/>
+        <text name="sd_colour_cream" text="Creme"/>
+        <text name="sd_colour_red" text="Vermelho"/>
+        <text name="sd_colour_burgundy" text="Vinho"/>
+        <text name="sd_colour_orange" text="Laranja"/>
+        <text name="sd_colour_yellow" text="Amarelo"/>
+        <text name="sd_colour_lime" text="Verde-limão"/>
+        <text name="sd_colour_green" text="Verde"/>
+        <text name="sd_colour_darkGreen" text="Verde-escuro"/>
+        <text name="sd_colour_skyBlue" text="Azul-celeste"/>
+        <text name="sd_colour_blue" text="Azul"/>
+        <text name="sd_colour_navy" text="Azul-marinho"/>
+        <text name="sd_colour_purple" text="Roxo"/>
+        <text name="sd_colour_pink" text="Rosa"/>
+        <text name="sd_colour_grey" text="Cinza"/>
+        <text name="sd_colour_black" text="Preto"/>
+        <text name="sd_shop_turntableSmall" text="Plataforma giratória pequena"/>
+        <text name="sd_config_finish" text="Acabamento"/>
+        <text name="sd_finish_plaster" text="Reboco"/>
+        <text name="sd_finish_wood" text="Madeira"/>
+        <text name="sd_finish_metal" text="Metal escuro"/>
+    </texts>
+</l10n>

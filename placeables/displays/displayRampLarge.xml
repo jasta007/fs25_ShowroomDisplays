@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<placeable type="simplePlaceable">
+    <storeData>
+        <name>$l10n_sd_shop_displayRampLarge</name>
+        <functions>
+            <function>$l10n_sd_function_display</function>
+        </functions>
+        <image>placeables/displays/store_displayRampLarge.dds</image>
+        <price>7500</price>
+        <dailyUpkeep>0</dailyUpkeep>
+        <lifetime>1000</lifetime>
+        <rotation>0</rotation>
+        <brand>NONE</brand>
+        <species>placeable</species>
+        <category>decoration</category>
+        <brush>
+            <type>placeable</type>
+            <category>decoration</category>
+            <tab>decoration</tab>
+        </brush>
+    </storeData>
+
+    <base>
+        <filename>placeables/displays/displayRampLarge.i3d</filename>
+        <canBeRenamed>false</canBeRenamed>
+    </base>
+
+    <placement useRandomYRotation="false" useManualYRotation="true">
+        <!-- Driven along z. -->
+    </placement>
+
+    <sdFinish>
+        <sdFinishConfigurations>
+            <sdFinishConfiguration name="$l10n_sd_finish_plaster" price="0" isDefault="true"/>
+            <sdFinishConfiguration name="$l10n_sd_finish_wood" price="0"/>
+            <sdFinishConfiguration name="$l10n_sd_finish_metal" price="0"/>
+        </sdFinishConfigurations>
+    </sdFinish>
+
+    <sdColour>
+        <sdColourConfigurations>
+            <sdColourConfiguration name="$l10n_sd_colour_brand" price="0" isDefault="true"/>
+            <sdColourConfiguration name="$l10n_sd_colour_white" price="0"/>
+            <sdColourConfiguration name="$l10n_sd_colour_cream" price="0"/>
+            <sdColourConfiguration name="$l10n_sd_colour_red" price="0"/>
+            <sdColourConfiguration name="$l10n_sd_colour_burgundy" price="0"/>
+            <sdColourConfiguration name="$l10n_sd_colour_orange" price="0"/>
+            <sdColourConfiguration name="$l10n_sd_colour_yellow" price="0"/>
+            <sdColourConfiguration name="$l10n_sd_colour_lime" price="0"/>
+            <sdColourConfiguration name="$l10n_sd_colour_green" price="0"/>
+            <sdColourConfiguration name="$l10n_sd_colour_darkGreen" price="0"/>
+            <sdColourConfiguration name="$l10n_sd_colour_skyBlue" price="0"/>
+            <sdColourConfiguration name="$l10n_sd_colour_blue" price="0"/>
+            <sdColourConfiguration name="$l10n_sd_colour_navy" price="0"/>
+            <sdColourConfiguration name="$l10n_sd_colour_purple" price="0"/>
+            <sdColourConfiguration name="$l10n_sd_colour_pink" price="0"/>
+            <sdColourConfiguration name="$l10n_sd_colour_grey" price="0"/>
+            <sdColourConfiguration name="$l10n_sd_colour_black" price="0"/>
+        </sdColourConfigurations>
+    </sdColour>
+</placeable>

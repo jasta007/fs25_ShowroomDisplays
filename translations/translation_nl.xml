@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <texts>
+        <text name="sd_shop_driveThrough" text="Doorrijpodium"/>
+        <text name="sd_shop_displayRamp" text="Showhelling"/>
+        <text name="sd_shop_displayRampLarge" text="Grote showhelling"/>
+        <text name="sd_shop_productRamp" text="Platform-showhelling"/>
+        <text name="sd_shop_turntable" text="Draaiplateau"/>
+        <text name="sd_function_display" text="Een showstand om een machine op te parkeren en te laten zien."/>
+        <text name="sd_function_turntable" text="De schijf draait langzaam: laat er een machine op staan en die draait mee, met alles wat eraan gekoppeld is."/>
+        <text name="sd_config_colour" text="Kleur"/>
+        <text name="sd_colour_brand" text="Merkkleur"/>
+        <text name="sd_config_spin" text="Draaisnelheid"/>
+        <text name="sd_spin_off" text="Uit"/>
+        <text name="sd_spin_slow" text="Langzaam"/>
+        <text name="sd_spin_medium" text="Gemiddeld"/>
+        <text name="sd_spin_fast" text="Snel"/>
+        <text name="sd_colour_white" text="Wit"/>
+        <text name="sd_colour_cream" text="Crème"/>
+        <text name="sd_colour_red" text="Rood"/>
+        <text name="sd_colour_burgundy" text="Bordeaux"/>
+        <text name="sd_colour_orange" text="Oranje"/>
+        <text name="sd_colour_yellow" text="Geel"/>
+        <text name="sd_colour_lime" text="Limoen"/>
+        <text name="sd_colour_green" text="Groen"/>
+        <text name="sd_colour_darkGreen" text="Donkergroen"/>
+        <text name="sd_colour_skyBlue" text="Hemelsblauw"/>
+        <text name="sd_colour_blue" text="Blauw"/>
+        <text name="sd_colour_navy" text="Marineblauw"/>
+        <text name="sd_colour_purple" text="Paars"/>
+        <text name="sd_colour_pink" text="Roze"/>
+        <text name="sd_colour_grey" text="Grijs"/>
+        <text name="sd_colour_black" text="Zwart"/>
+        <text name="sd_shop_turntableSmall" text="Kleine draaischijf"/>
+        <text name="sd_config_finish" text="Afwerking"/>
+        <text name="sd_finish_plaster" text="Pleisterwerk"/>
+        <text name="sd_finish_wood" text="Hout"/>
+        <text name="sd_finish_metal" text="Donker metaal"/>
+    </texts>
+</l10n>

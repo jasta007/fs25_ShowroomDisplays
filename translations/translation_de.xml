@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <texts>
+        <text name="sd_shop_driveThrough" text="Durchfahr-Podest"/>
+        <text name="sd_shop_displayRamp" text="Präsentationsrampe"/>
+        <text name="sd_shop_displayRampLarge" text="Große Präsentationsrampe"/>
+        <text name="sd_shop_productRamp" text="Plattform-Präsentationsrampe"/>
+        <text name="sd_shop_turntable" text="Drehteller"/>
+        <text name="sd_function_display" text="Ein Präsentationsstand, auf dem Sie eine Maschine abstellen und zur Schau stellen."/>
+        <text name="sd_function_turntable" text="Die Scheibe dreht sich langsam: Lass eine Maschine darauf stehen, dann dreht sie sich mit, samt allem Angehängten."/>
+        <text name="sd_config_colour" text="Farbe"/>
+        <text name="sd_colour_brand" text="Markenfarbe"/>
+        <text name="sd_config_spin" text="Drehgeschwindigkeit"/>
+        <text name="sd_spin_off" text="Aus"/>
+        <text name="sd_spin_slow" text="Langsam"/>
+        <text name="sd_spin_medium" text="Mittel"/>
+        <text name="sd_spin_fast" text="Schnell"/>
+        <text name="sd_colour_white" text="Weiß"/>
+        <text name="sd_colour_cream" text="Creme"/>
+        <text name="sd_colour_red" text="Rot"/>
+        <text name="sd_colour_burgundy" text="Bordeaux"/>
+        <text name="sd_colour_orange" text="Orange"/>
+        <text name="sd_colour_yellow" text="Gelb"/>
+        <text name="sd_colour_lime" text="Hellgrün"/>
+        <text name="sd_colour_green" text="Grün"/>
+        <text name="sd_colour_darkGreen" text="Dunkelgrün"/>
+        <text name="sd_colour_skyBlue" text="Himmelblau"/>
+        <text name="sd_colour_blue" text="Blau"/>
+        <text name="sd_colour_navy" text="Marineblau"/>
+        <text name="sd_colour_purple" text="Lila"/>
+        <text name="sd_colour_pink" text="Rosa"/>
+        <text name="sd_colour_grey" text="Grau"/>
+        <text name="sd_colour_black" text="Schwarz"/>
+        <text name="sd_shop_turntableSmall" text="Kleiner Drehteller"/>
+        <text name="sd_config_finish" text="Oberfläche"/>
+        <text name="sd_finish_plaster" text="Putz"/>
+        <text name="sd_finish_wood" text="Holz"/>
+        <text name="sd_finish_metal" text="Dunkles Metall"/>
+    </texts>
+</l10n>

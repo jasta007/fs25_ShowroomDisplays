@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <texts>
+        <text name="sd_shop_driveThrough" text="通行展台"/>
+        <text name="sd_shop_displayRamp" text="展示坡台"/>
+        <text name="sd_shop_displayRampLarge" text="大型展示坡台"/>
+        <text name="sd_shop_productRamp" text="平台展示坡台"/>
+        <text name="sd_shop_turntable" text="旋转展台"/>
+        <text name="sd_function_display" text="可停放机器进行展示的展台。"/>
+        <text name="sd_function_turntable" text="转盘缓慢旋转：把机器停在上面，它会连同挂接的农具一起随转盘转动。"/>
+        <text name="sd_config_colour" text="Barva"/>
+        <text name="sd_colour_brand" text="Barva značky"/>
+        <text name="sd_config_spin" text="Rychlost otáčení"/>
+        <text name="sd_spin_off" text="Vypnuto"/>
+        <text name="sd_spin_slow" text="Pomalu"/>
+        <text name="sd_spin_medium" text="Středně"/>
+        <text name="sd_spin_fast" text="Rychle"/>
+        <text name="sd_colour_white" text="白色"/>
+        <text name="sd_colour_cream" text="奶油色"/>
+        <text name="sd_colour_red" text="红色"/>
+        <text name="sd_colour_burgundy" text="酒红色"/>
+        <text name="sd_colour_orange" text="橙色"/>
+        <text name="sd_colour_yellow" text="黄色"/>
+        <text name="sd_colour_lime" text="青柠色"/>
+        <text name="sd_colour_green" text="绿色"/>
+        <text name="sd_colour_darkGreen" text="深绿色"/>
+        <text name="sd_colour_skyBlue" text="天蓝色"/>
+        <text name="sd_colour_blue" text="蓝色"/>
+        <text name="sd_colour_navy" text="海军蓝"/>
+        <text name="sd_colour_purple" text="紫色"/>
+        <text name="sd_colour_pink" text="粉色"/>
+        <text name="sd_colour_grey" text="灰色"/>
+        <text name="sd_colour_black" text="黑色"/>
+        <text name="sd_shop_turntableSmall" text="Malá otočná plošina"/>
+        <text name="sd_config_finish" text="Povrch"/>
+        <text name="sd_finish_plaster" text="Omítka"/>
+        <text name="sd_finish_wood" text="Dřevo"/>
+        <text name="sd_finish_metal" text="Tmavý kov"/>
+    </texts>
+</l10n>

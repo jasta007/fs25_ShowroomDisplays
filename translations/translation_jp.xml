@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <texts>
+        <text name="sd_shop_driveThrough" text="通り抜け展示台"/>
+        <text name="sd_shop_displayRamp" text="展示用スロープ"/>
+        <text name="sd_shop_displayRampLarge" text="大型展示用スロープ"/>
+        <text name="sd_shop_productRamp" text="プラットフォーム付き展示用スロープ"/>
+        <text name="sd_shop_turntable" text="ターンテーブル"/>
+        <text name="sd_function_display" text="機械を載せて見せるための展示台です。"/>
+        <text name="sd_function_turntable" text="ディスクはゆっくり回ります。機械を載せたままにすると、連結した作業機ごと一緒に回ります。"/>
+        <text name="sd_config_colour" text="色"/>
+        <text name="sd_colour_brand" text="ブランドカラー"/>
+        <text name="sd_config_spin" text="回転速度"/>
+        <text name="sd_spin_off" text="オフ"/>
+        <text name="sd_spin_slow" text="低速"/>
+        <text name="sd_spin_medium" text="中速"/>
+        <text name="sd_spin_fast" text="高速"/>
+        <text name="sd_colour_white" text="白"/>
+        <text name="sd_colour_cream" text="クリーム"/>
+        <text name="sd_colour_red" text="赤"/>
+        <text name="sd_colour_burgundy" text="ワインレッド"/>
+        <text name="sd_colour_orange" text="オレンジ"/>
+        <text name="sd_colour_yellow" text="黄"/>
+        <text name="sd_colour_lime" text="ライム"/>
+        <text name="sd_colour_green" text="緑"/>
+        <text name="sd_colour_darkGreen" text="深緑"/>
+        <text name="sd_colour_skyBlue" text="空色"/>
+        <text name="sd_colour_blue" text="青"/>
+        <text name="sd_colour_navy" text="紺"/>
+        <text name="sd_colour_purple" text="紫"/>
+        <text name="sd_colour_pink" text="ピンク"/>
+        <text name="sd_colour_grey" text="灰色"/>
+        <text name="sd_colour_black" text="黒"/>
+        <text name="sd_shop_turntableSmall" text="小型ターンテーブル"/>
+        <text name="sd_config_finish" text="仕上げ"/>
+        <text name="sd_finish_plaster" text="しっくい"/>
+        <text name="sd_finish_wood" text="木材"/>
+        <text name="sd_finish_metal" text="ダークメタル"/>
+    </texts>
+</l10n>
