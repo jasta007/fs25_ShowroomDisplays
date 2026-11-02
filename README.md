@@ -1,12 +1,8 @@
 # Showroom Displays
 
-Display stands for Farming Simulator 25: park a machine on one and show it off. For farms, dealerships and map makers.
+Vehicle Display stands for Farming Simulator 25: park a machine on top and it changes color and logo.
 
-- Drive-through display, display ramp (small and large), product jump ramp (set two facing each other with a gap) and a turntable.
-- Found in the shop under Decorations.
-- Works on its own. With Realistic Equestrian installed, a sponsor's machine on a display counts towards your sponsor branding.
-
-Work in progress: logos from the parked machine's brand, colour and finish options, turntable speeds, a smaller turntable and map vehicles on turntables are still to come.
+- Five different display ramps with customization options and automatic sponsor signs. Found in the shop under Decorations..
 
 ## Map makers
 
