@@ -24,6 +24,7 @@
         <storeItem xmlFilename="placeables/displays/displayRampLarge.xml"/>
         <storeItem xmlFilename="placeables/displays/productRamp.xml"/>
         <storeItem xmlFilename="placeables/displays/turntable.xml"/>
+        <storeItem xmlFilename="placeables/displays/turntableSmall.xml"/>
     </storeItems>
     <l10n filenamePrefix="translations/translation"/>
 </modDesc>

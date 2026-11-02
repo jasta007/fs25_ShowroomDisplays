@@ -47,6 +47,7 @@ SdDisplays.AREAS = {
     ["placeables/displays/displayramplarge.xml"] = { { x = 0, y = 0.8, z = 0, hx = 1.9, hz = 3.0, slope = -1.6 / 6.6 } },
     ["placeables/displays/productramp.xml"] = { { x = 0, y = 2.0 - 3.5 * 2.0 / 7.5, z = 5.0, hx = 2.0, hz = 4.0, slope = -2.0 / 7.5 } },
     ["placeables/displays/turntable.xml"] = { { x = 0, y = 0.73, z = 0, r = 3.35, slope = 0 } },
+    ["placeables/displays/turntablesmall.xml"] = { { x = 0, y = 0.58, z = 0, r = 2.3, slope = 0 } },
 }
 
 -- The Colour option: "Brand colour" first, then these (linear, as the shader takes them).
@@ -60,6 +61,13 @@ SdDisplays.COLOURS = {
     { "black", 0.015, 0.015, 0.015 },
 }
 SdDisplays.DEFAULT_COLOUR = { 0.005, 0.02, 0.10 }   -- navy, when a brand has no colour of its own
+
+-- The Finish option: the texture on the "stone" shapes, in option order (Plaster first).
+SdDisplays.FINISH_CONFIG = "sdFinish"
+SdDisplays.FINISHES = { "plinthStone_diffuse.dds", "finishWood_diffuse.dds", "finishMetal_diffuse.dds" }
+SdDisplays.FINISH_DIR = "placeables/displays/"
+SdDisplays.STONE = "stone"
+SdDisplays.modDirectory = g_currentModDirectory
 
 SdDisplays.LOGO = "^eqSponsor_%d+b?$"
 SdDisplays.FACE = "eqBoardFace"
@@ -201,6 +209,23 @@ local function shapesMatching(root, test)
 end
 
 
+--- @param index number|nil the Finish option bought (1 = Plaster)
+--- @return string the texture file it uses, inside the mod. Pure.
+function SdDisplays.finishFile(index)
+    local file = SdDisplays.FINISHES[type(index) == "number" and index or 1] or SdDisplays.FINISHES[1]
+    return SdDisplays.FINISH_DIR .. file
+end
+
+
+local function showFinish(node, path)
+    if setMaterialDiffuseMapFromFile == nil then return end
+    local material = getMaterial(node, 0)
+    if material == nil or material == 0 then return end
+    local finished = setMaterialDiffuseMapFromFile(material, path, true, true, false)
+    if finished ~= nil and finished ~= 0 then setMaterial(node, finished, 0) end
+end
+
+
 local function showLogo(node, brand)
     if brand == nil or setMaterialDiffuseMapFromFile == nil then return false end
     local material = getMaterial(node, 0)
@@ -252,12 +277,22 @@ function SdDisplays.apply(placeable)
     local brand = SdDisplays.brandOf(placeable)
     local override = SdDisplays.overrides[placeable]
     local option = placeable.configurations ~= nil and placeable.configurations[SdDisplays.COLOUR_CONFIG] or nil
+    local finish = placeable.configurations ~= nil and placeable.configurations[SdDisplays.FINISH_CONFIG] or nil
     local key = tostring(brand) .. "|" .. tostring(option) .. "|" .. tostring(override ~= nil and override.colour or nil)
+        .. "|" .. tostring(finish)
     local state = SdDisplays.state[placeable]
     if state ~= nil and state.key == key then return end
-    SdDisplays.state[placeable] = { key = key, brand = brand }
+    local previous = SdDisplays.state[placeable]
+    SdDisplays.state[placeable] = { key = key, brand = brand, finish = finish }
     local byName = SdBrands.all()
     local root = placeable.rootNode
+    -- the finish only when it changes (Plaster is what the model has)
+    if (previous == nil and (finish or 1) ~= 1) or (previous ~= nil and previous.finish ~= finish) then
+        local path = (SdDisplays.modDirectory or "") .. SdDisplays.finishFile(finish)
+        for _, node in ipairs(shapesMatching(root, function(name) return name == SdDisplays.STONE end)) do
+            SdLog.try("finish", showFinish, node, path)
+        end
+    end
     if byName[brand or ""] ~= nil then
         for _, node in ipairs(shapesMatching(root, function(name) return string.match(name, SdDisplays.LOGO) ~= nil end)) do
             SdLog.try("logo", showLogo, node, byName[brand])
@@ -294,10 +329,13 @@ function SdDisplays.registerConfiguration()
         Log:warning("no placeable configurations; displays keep their colour")
         return
     end
-    if manager.configurations == nil or manager.configurations[SdDisplays.COLOUR_CONFIG] == nil then
-        local title = "Colour"
-        if g_i18n ~= nil and g_i18n:hasText("sd_config_colour") then title = g_i18n:getText("sd_config_colour") end
-        manager:addConfigurationType(SdDisplays.COLOUR_CONFIG, title, SdDisplays.COLOUR_CONFIG, PlaceableConfigurationItem)
+    for _, entry in ipairs({ { SdDisplays.COLOUR_CONFIG, "sd_config_colour", "Colour" },
+                             { SdDisplays.FINISH_CONFIG, "sd_config_finish", "Finish" } }) do
+        local name, textKey, title = entry[1], entry[2], entry[3]
+        if manager.configurations == nil or manager.configurations[name] == nil then
+            if g_i18n ~= nil and g_i18n:hasText(textKey) then title = g_i18n:getText(textKey) end
+            manager:addConfigurationType(name, title, name, PlaceableConfigurationItem)
+        end
     end
 end
 
@@ -381,12 +419,14 @@ SdDisplays.api = {
 
 
 function SdDisplays.install()
-    SdLog.try("colour option", SdDisplays.registerConfiguration)
+    SdLog.try("colour and finish options", SdDisplays.registerConfiguration)
     -- paint as the Colour option loads, in the shop's preview too
     if PlaceableConfigurationItem ~= nil and PlaceableConfigurationItem.onPostLoad ~= nil then
         PlaceableConfigurationItem.onPostLoad = Utils.appendedFunction(PlaceableConfigurationItem.onPostLoad, function(item, placeable)
-            if type(item) == "table" and item.configName == SdDisplays.COLOUR_CONFIG and SdDisplays.isDisplay(placeable) then
-                SdDisplays.state[placeable] = nil
+            if type(item) == "table" and (item.configName == SdDisplays.COLOUR_CONFIG or item.configName == SdDisplays.FINISH_CONFIG)
+                and SdDisplays.isDisplay(placeable) then
+                -- keep the finish we know about; only the cache key is reset
+                if SdDisplays.state[placeable] ~= nil then SdDisplays.state[placeable].key = nil end
                 SdLog.try("display look", SdDisplays.apply, placeable)
             end
         end)

@@ -53,10 +53,13 @@ PIECES = [
     {"name": "displayRampLarge", "colour": "green", "size": (3.8, 6.6, 1.6)},
     {"name": "productRamp", "colour": "red"},
     {"name": "turntable", "colour": "navy"},
+    {"name": "turntableSmall", "colour": "navy"},
 ]
 DRIVE = {"half_x": 1.6, "half_deck": 3.0, "ramp": 3.5, "height": 0.75}
 PRODUCT = {"half_x": 2.0, "top": 1.5, "ramp": 7.5, "height": 2.0}
 TURNTABLE = {"radius": 4.0, "disc": 3.45, "height": 0.7, "ramp": 3.5, "ramp_half": 1.6, "sides": 96}
+# about 30% smaller (James, 2026-11-02): for cars, small tractors and implements
+TURNTABLE_SMALL = {"radius": 2.8, "disc": 2.4, "height": 0.55, "ramp": 2.6, "ramp_half": 1.3, "sides": 80}
 DISC = "eqTurntableDisc"
 
 
@@ -300,9 +303,8 @@ def product():
     return {"stone": stone, "paint": paint, "white": white}, logos, col
 
 
-def turntable():
+def turntable(t=TURNTABLE):
     stone, paint, white, col, logos, disc = Mesh(), Mesh(), Mesh(), Mesh(), {}, Mesh()
-    t = TURNTABLE
     R, r, h, n = t["radius"], t["disc"], t["height"], t["sides"]
     cylinder(stone, R, 0.0, h, n)
     flat_cylinder(col, R, 0.0, h + 0.02, 48)
@@ -416,7 +418,8 @@ def write_i3d(name, colour, path, statics, logos, col):
 
 def main(names=()):
     builders = {"driveThrough": drive, "displayRamp": lambda: ramp(PIECES[1]["size"]),
-                "displayRampLarge": lambda: ramp(PIECES[2]["size"]), "productRamp": product, "turntable": turntable}
+                "displayRampLarge": lambda: ramp(PIECES[2]["size"]), "productRamp": product, "turntable": turntable,
+                "turntableSmall": lambda: turntable(TURNTABLE_SMALL)}
     for piece in PIECES:
         name = piece["name"]
         if names and name not in names:
