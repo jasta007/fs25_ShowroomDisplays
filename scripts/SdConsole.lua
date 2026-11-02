@@ -6,9 +6,9 @@
     sdMapDisplay       the display nearest you behaves as if it came with the map, until you leave
                        the game (again to undo): machines of nobody's farm on it are locked, and a
                        turntable picks up static models standing on its disc.
-    sdTestModel        puts a static copy of the machine nearest you (no wheels, no physics, like a
-                       map maker's showroom model) on the turntable nearest you: with sdMapDisplay
-                       on that turntable it turns with the disc.
+    sdTestModel        puts a static copy of the machine nearest you (as it looks now, wheels and
+                       all, but static like a map maker's showroom model) on the turntable nearest
+                       you: with sdMapDisplay on that turntable it turns with the disc.
     sdTurntables       lists the turntables: came with the map, machines held and locked, models,
                        turning, Spin speed.
 
@@ -83,14 +83,27 @@ function SdConsole:testModel()
     end
     local vehicle = nearest(candidates, function(v) return v.rootNode end)
     if vehicle == nil then return "No machine nearby to copy" end
-    local node = g_i3DManager:loadI3DFile(vehicle.i3dFilename, false, false)
-    if node == nil or node == 0 then return "Could not load " .. tostring(vehicle.i3dFilename) end
+    -- copy what the machine shows now (its components carry the wheels and fitted parts), then
+    -- stand the copy on the disc as high above it as the machine stands above the ground
+    local vx, vy, vz = getWorldTranslation(vehicle.rootNode)
+    local ground = g_terrainNode ~= nil and getTerrainHeightAtWorldPos(g_terrainNode, vx, 0, vz) or vy
+    local node = createTransformGroup("sdTestModel")
     link(getRootNode(), node)
+    setWorldTranslation(node, vx, vy, vz)
+    setWorldQuaternion(node, getWorldQuaternion(vehicle.rootNode))
+    local copies = {}
+    for _, component in ipairs(vehicle.components or { { node = vehicle.rootNode } }) do
+        local copy = clone(component.node, false, false, false)
+        link(node, copy)
+        setWorldTranslation(copy, getWorldTranslation(component.node))
+        setWorldQuaternion(copy, getWorldQuaternion(component.node))
+        table.insert(copies, copy)
+    end
     local entry = SdTurntable.tables[turntable.rootNode]
-    local disc = entry ~= nil and entry.disc or turntable.rootNode
-    local x, y, z = getWorldTranslation(disc)
-    setWorldTranslation(node, x, y + 0.6, z)
-    setWorldRotation(node, 0, 0, 0)
+    local x, y, z = getWorldTranslation(turntable.rootNode)
+    local areas = SdDisplays.areasFor(turntable.configFileName)
+    local top = y + (areas ~= nil and areas[1].y or 0.7)
+    setWorldTranslation(node, x, top + math.max(vy - ground, 0) + 0.02, z)
     -- a showroom model's parts are static, not the dynamic parts a machine is built from
     local function makeStatic(n)
         if getRigidBodyType ~= nil and RigidBodyType ~= nil then
@@ -99,7 +112,10 @@ function SdConsole:testModel()
         end
         for i = 0, getNumOfChildren(n) - 1 do makeStatic(getChildAt(n, i)) end
     end
-    makeStatic(node)
+    for _, copy in ipairs(copies) do
+        makeStatic(copy)
+        addToPhysics(copy)
+    end
     table.insert(SdConsole.models, node)
     if entry ~= nil then entry.propTries = 0 end
     SdTurntable.scannedAt = nil
@@ -118,9 +134,9 @@ function SdConsole:turntables()
         end
         for _ in pairs(entry.props) do props = props + 1 end
         local configs = entry.placeable.configurations
-        table.insert(lines, string.format("%s: map=%s held=%d locked=%d models=%d tries=%d angle=%.2f spin=%s server=%s",
+        table.insert(lines, string.format("%s: map=%s held=%d locked=%d models=%d tries=%d hits=%d angle=%.2f spin=%s server=%s",
             tostring(entry.placeable.configFileName):match("[^/]+$") or "?", tostring(entry.mapPlaced), held, locked, props,
-            entry.propTries or 0, entry.angle or 0, tostring(configs ~= nil and configs[SdTurntable.SPEED_CONFIG] or nil),
+            entry.propTries or 0, entry.hitCount or 0, entry.angle or 0, tostring(configs ~= nil and configs[SdTurntable.SPEED_CONFIG] or nil),
             tostring(g_currentMission:getIsServer())))
     end
     if #lines == 0 then return "No turntables" end

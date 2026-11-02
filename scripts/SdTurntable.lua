@@ -267,8 +267,34 @@ function SdTurntable.onPropHit(entry, hit)
     if g_currentMission ~= nil and g_currentMission.getNodeObject ~= nil and g_currentMission:getNodeObject(hit) ~= nil then
         return true   -- a machine, a placeable or anything else the game runs: not a model
     end
+    entry.hits = entry.hits or {}
     entry.hits[hit] = true
     return true
+end
+
+
+--- Static models the overlap reported: let each turn with the disc. The overlap may answer at
+--- once or a frame later, so update() calls this too.
+local function takeHits(entry)
+    if entry.hits == nil or next(entry.hits) == nil then return end
+    local hits = entry.hits
+    entry.hits = {}
+    for hit in pairs(hits) do
+        local model = (entityExists == nil or entityExists(hit)) and SdTurntable.modelRoot(entry, hit, entry.avoid or {}) or nil
+        if model ~= nil and entry.props[model] == nil then
+            local x, y, z = getWorldTranslation(model)
+            local qx, qy, qz, qw = getWorldQuaternion(model)
+            local prop = { parent = getParent(model), bodies = {} }
+            link(entry.disc, model)
+            setWorldTranslation(model, x, y, z)
+            setWorldQuaternion(model, qx, qy, qz, qw)
+            if RigidBodyType ~= nil then
+                setSubtreeBodies(model, RigidBodyType.STATIC, RigidBodyType.KINEMATIC, prop.bodies)
+            end
+            entry.props[model] = prop
+            Log:info("turntable: a model (%s) turns with the disc", tostring(getName(model)))
+        end
+    end
 end
 
 
@@ -285,37 +311,18 @@ local function grabProps(entry)
     for _, vehicle in ipairs(g_currentMission ~= nil and g_currentMission.vehicleSystem ~= nil and g_currentMission.vehicleSystem.vehicles or {}) do
         for _, component in ipairs(vehicle.components or {}) do avoid[component.node] = true end
     end
+    entry.avoid = avoid
+    entry.hits = entry.hits or {}
+    -- each turntable answers its own overlap, whenever the answer comes
+    entry.overlap = entry.overlap or { onOverlap = function(_, hit)
+        entry.hitCount = (entry.hitCount or 0) + 1
+        return SdTurntable.onPropHit(entry, hit)
+    end }
     local cx, cy, cz = getWorldTranslation(entry.disc)
     local r = (entry.radius or 3) * 0.9
-    entry.hits = {}
-    SdTurntable.overlapEntry = entry
     overlapBox(cx, cy + SdTurntable.PROP_HEIGHT / 2 + 0.1, cz, 0, 0, 0, r, SdTurntable.PROP_HEIGHT / 2, r,
-        "onOverlapProp", SdTurntable, 0xFFFFFFFF, false, true, true)
-    SdTurntable.overlapEntry = nil
-    for hit in pairs(entry.hits) do
-        local model = SdTurntable.modelRoot(entry, hit, avoid)
-        if model ~= nil and entry.props[model] == nil then
-            local x, y, z = getWorldTranslation(model)
-            local qx, qy, qz, qw = getWorldQuaternion(model)
-            local prop = { parent = getParent(model), bodies = {} }
-            link(entry.disc, model)
-            setWorldTranslation(model, x, y, z)
-            setWorldQuaternion(model, qx, qy, qz, qw)
-            if RigidBodyType ~= nil then
-                setSubtreeBodies(model, RigidBodyType.STATIC, RigidBodyType.KINEMATIC, prop.bodies)
-            end
-            entry.props[model] = prop
-            Log:info("turntable: a model (%s) turns with the disc", tostring(getName(model)))
-        end
-    end
-    entry.hits = nil
-end
-
-
-function SdTurntable:onOverlapProp(hit)
-    local entry = SdTurntable.overlapEntry
-    if entry == nil then return false end
-    return SdTurntable.onPropHit(entry, hit)
+        "onOverlap", entry.overlap, 0xFFFFFFFF, false, true, true)
+    takeHits(entry)
 end
 
 
@@ -405,6 +412,7 @@ function SdTurntable.update(dt)
         and (SdTurntable.syncedAt == nil or now - SdTurntable.syncedAt >= SdTurntable.SYNC_MS or now < SdTurntable.syncedAt)
     if sync then SdTurntable.syncedAt = now end
     for _, entry in pairs(SdTurntable.tables) do
+        if entry.hits ~= nil and next(entry.hits) ~= nil then SdLog.try("turntable models", takeHits, entry) end
         local configs = entry.placeable.configurations
         local turnMs = SdTurntable.turnMs(configs ~= nil and configs[SdTurntable.SPEED_CONFIG] or nil)
         local spinning
