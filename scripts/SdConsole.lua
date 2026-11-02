@@ -22,8 +22,8 @@ SdConsole.models = {}   -- loaded test models, deleted when the game ends
 
 local function playerPosition()
     if g_localPlayer ~= nil and g_localPlayer.getPosition ~= nil then
-        local ok, x, y, z = pcall(g_localPlayer.getPosition, g_localPlayer)
-        if ok and x ~= nil then return x, y, z end
+        local x, y, z = g_localPlayer:getPosition()
+        if x ~= nil then return x, y, z end
     end
     if g_currentMission ~= nil and g_currentMission.controlledVehicle ~= nil then
         return getWorldTranslation(g_currentMission.controlledVehicle.rootNode)
@@ -94,8 +94,8 @@ function SdConsole:testModel()
     -- a showroom model's parts are static, not the dynamic parts a machine is built from
     local function makeStatic(n)
         if getRigidBodyType ~= nil and RigidBodyType ~= nil then
-            local ok, kind = pcall(getRigidBodyType, n)
-            if ok and kind ~= nil and kind ~= RigidBodyType.NONE then setRigidBodyType(n, RigidBodyType.STATIC) end
+            local kind = getRigidBodyType(n)
+            if kind ~= nil and kind ~= RigidBodyType.NONE then setRigidBodyType(n, RigidBodyType.STATIC) end
         end
         for i = 0, getNumOfChildren(n) - 1 do makeStatic(getChildAt(n, i)) end
     end

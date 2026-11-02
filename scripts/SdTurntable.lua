@@ -227,8 +227,7 @@ end
 
 local function setSubtreeBodies(node, from, to, changed)
     if getRigidBodyType ~= nil and setRigidBodyType ~= nil and from ~= nil and to ~= nil then
-        local ok, kind = pcall(getRigidBodyType, node)
-        if ok and kind == from then
+        if getRigidBodyType(node) == from then
             setRigidBodyType(node, to)
             table.insert(changed, node)
         end
@@ -239,8 +238,8 @@ end
 
 local function hasAttribute(node)
     if getUserAttribute == nil then return false end
-    local ok, value = pcall(getUserAttribute, node, SdTurntable.MODEL_ATTRIBUTE)
-    return ok and (value == true or value == "true" or value == 1)
+    local value = getUserAttribute(node, SdTurntable.MODEL_ATTRIBUTE)
+    return value == true or value == "true" or value == 1
 end
 
 
