@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <texts>
+        <text name="sd_shop_driveThrough" text="Plataforma de passagem"/>
+        <text name="sd_shop_displayRamp" text="Rampa de exposição"/>
+        <text name="sd_shop_displayRampLarge" text="Rampa de exposição grande"/>
+        <text name="sd_shop_productRamp" text="Rampa de exposição com plataforma"/>
+        <text name="sd_shop_turntable" text="Plataforma giratória"/>
+        <text name="sd_function_display" text="Um expositor para estacionar uma máquina e exibi-la."/>
+        <text name="sd_function_turntable" text="O disco gira devagar: deixe uma máquina sobre ele e ela gira com ele, com tudo o que estiver engatado."/>
+    </texts>
+</l10n>

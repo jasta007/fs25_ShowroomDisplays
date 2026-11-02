@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <texts>
+        <text name="sd_shop_driveThrough" text="Drive-Through Display"/>
+        <text name="sd_shop_displayRamp" text="Display Ramp"/>
+        <text name="sd_shop_displayRampLarge" text="Large Display Ramp"/>
+        <text name="sd_shop_productRamp" text="Platform Display Ramp"/>
+        <text name="sd_shop_turntable" text="Turntable"/>
+        <text name="sd_function_display" text="A display stand to park a machine on and show it off."/>
+        <text name="sd_function_turntable" text="The disc turns slowly: leave a machine on it and it turns with the disc, with anything hitched to it."/>
+    </texts>
+</l10n>

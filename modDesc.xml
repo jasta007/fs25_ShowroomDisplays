@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<modDesc descVersion="115">
+    <author>Jasta007</author>
+    <version>0.1.0.0</version>
+    <title>
+        <en>Showroom Displays</en>
+    </title>
+    <description>
+        <en>
+            <![CDATA[Display stands to show off your machines: a drive-through display, display ramps, a platform display ramp and a slowly turning turntable. Find them under Decorations.]]>
+        </en>
+        <de>
+            <![CDATA[Präsentationsstände für Ihre Maschinen: ein Durchfahr-Podest, Präsentationsrampen, eine Plattform-Präsentationsrampe und ein langsam drehender Drehteller. Zu finden unter Dekoration.]]>
+        </de>
+    </description>
+    <iconFilename>icon_ShowroomDisplays.dds</iconFilename>
+    <multiplayer supported="true"/>
+    <storeItems>
+        <storeItem xmlFilename="placeables/displays/driveThrough.xml"/>
+        <storeItem xmlFilename="placeables/displays/displayRamp.xml"/>
+        <storeItem xmlFilename="placeables/displays/displayRampLarge.xml"/>
+        <storeItem xmlFilename="placeables/displays/productRamp.xml"/>
+        <storeItem xmlFilename="placeables/displays/turntable.xml"/>
+    </storeItems>
+    <l10n filenamePrefix="translations/translation"/>
+</modDesc>

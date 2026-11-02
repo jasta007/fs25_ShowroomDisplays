@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <texts>
+        <text name="sd_shop_driveThrough" text="Проездной подиум"/>
+        <text name="sd_shop_displayRamp" text="Выставочная рампа"/>
+        <text name="sd_shop_displayRampLarge" text="Большая выставочная рампа"/>
+        <text name="sd_shop_productRamp" text="Выставочная рампа с площадкой"/>
+        <text name="sd_shop_turntable" text="Поворотный подиум"/>
+        <text name="sd_function_display" text="Выставочный стенд: поставьте на него технику и покажите её."/>
+        <text name="sd_function_turntable" text="Диск медленно вращается: оставьте на нём технику, и она будет вращаться вместе с ним со всем прицепленным."/>
+    </texts>
+</l10n>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <texts>
+        <text name="sd_shop_driveThrough" text="通り抜け展示台"/>
+        <text name="sd_shop_displayRamp" text="展示用スロープ"/>
+        <text name="sd_shop_displayRampLarge" text="大型展示用スロープ"/>
+        <text name="sd_shop_productRamp" text="プラットフォーム付き展示用スロープ"/>
+        <text name="sd_shop_turntable" text="ターンテーブル"/>
+        <text name="sd_function_display" text="機械を載せて見せるための展示台です。"/>
+        <text name="sd_function_turntable" text="ディスクはゆっくり回ります。機械を載せたままにすると、連結した作業機ごと一緒に回ります。"/>
+    </texts>
+</l10n>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<placeable type="simplePlaceable">
+    <storeData>
+        <name>$l10n_sd_shop_productRamp</name>
+        <functions>
+            <function>$l10n_sd_function_display</function>
+        </functions>
+        <image>placeables/displays/store_productRamp.dds</image>
+        <price>6000</price>
+        <dailyUpkeep>0</dailyUpkeep>
+        <lifetime>1000</lifetime>
+        <rotation>0</rotation>
+        <brand>NONE</brand>
+        <species>placeable</species>
+        <category>decoration</category>
+        <brush>
+            <type>placeable</type>
+            <category>decoration</category>
+            <tab>decoration</tab>
+        </brush>
+    </storeData>
+
+    <base>
+        <filename>placeables/displays/productRamp.i3d</filename>
+        <canBeRenamed>false</canBeRenamed>
+    </base>
+
+    <placement useRandomYRotation="false" useManualYRotation="true">
+        <!-- Driven along z. -->
+    </placement>
+</placeable>

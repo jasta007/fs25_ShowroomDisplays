@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <texts>
+        <text name="sd_shop_driveThrough" text="Doorrijpodium"/>
+        <text name="sd_shop_displayRamp" text="Showhelling"/>
+        <text name="sd_shop_displayRampLarge" text="Grote showhelling"/>
+        <text name="sd_shop_productRamp" text="Platform-showhelling"/>
+        <text name="sd_shop_turntable" text="Draaiplateau"/>
+        <text name="sd_function_display" text="Een showstand om een machine op te parkeren en te laten zien."/>
+        <text name="sd_function_turntable" text="De schijf draait langzaam: laat er een machine op staan en die draait mee, met alles wat eraan gekoppeld is."/>
+    </texts>
+</l10n>
