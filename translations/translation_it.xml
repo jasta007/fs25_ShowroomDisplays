@@ -31,5 +31,10 @@
         <text name="sd_colour_pink" text="Rosa"/>
         <text name="sd_colour_grey" text="Grigio"/>
         <text name="sd_colour_black" text="Nero"/>
+        <text name="sd_shop_turntableSmall" text="Piattaforma girevole piccola"/>
+        <text name="sd_config_finish" text="Finitura"/>
+        <text name="sd_finish_plaster" text="Intonaco"/>
+        <text name="sd_finish_wood" text="Legno"/>
+        <text name="sd_finish_metal" text="Metallo scuro"/>
     </texts>
 </l10n>

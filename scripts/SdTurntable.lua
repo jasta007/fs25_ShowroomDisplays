@@ -20,7 +20,7 @@ SdTurntable = {}
 
 local Log = SdLog
 
-SdTurntable.XML = "placeables/displays/turntable.xml"
+SdTurntable.XMLS = { "placeables/displays/turntable.xml", "placeables/displays/turntablesmall.xml" }
 SdTurntable.DISC = "eqTurntableDisc"
 SdTurntable.SPEED_CONFIG = "sdSpin"
 -- ms per turn for each Spin speed option, in order: Off, Slow, Medium, Fast
@@ -37,7 +37,10 @@ SdTurntable.scannedAt = nil
 function SdTurntable.isTurntable(filename)
     if type(filename) ~= "string" then return false end
     local path = string.lower(string.gsub(filename, "\\", "/"))
-    return string.sub(path, -#SdTurntable.XML) == SdTurntable.XML
+    for _, xml in ipairs(SdTurntable.XMLS) do
+        if string.sub(path, -#xml) == xml then return true end
+    end
+    return false
 end
 
 
@@ -118,7 +121,7 @@ end
 
 
 local function onDisc(entry, vehicle)
-    local areas = SdDisplays.areasFor(SdTurntable.XML)
+    local areas = SdDisplays.areasFor(entry.placeable.configFileName)
     local wx, wy, wz = SdDisplays.footprint(vehicle)
     if areas == nil or wx == nil then return false end
     local x, y, z = worldToLocal(entry.placeable.rootNode, wx, wy, wz)

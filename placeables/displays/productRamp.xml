@@ -29,6 +29,14 @@
         <!-- Driven along z. -->
     </placement>
 
+    <sdFinish>
+        <sdFinishConfigurations>
+            <sdFinishConfiguration name="$l10n_sd_finish_plaster" price="0" isDefault="true"/>
+            <sdFinishConfiguration name="$l10n_sd_finish_wood" price="0"/>
+            <sdFinishConfiguration name="$l10n_sd_finish_metal" price="0"/>
+        </sdFinishConfigurations>
+    </sdFinish>
+
     <sdColour>
         <sdColourConfigurations>
             <sdColourConfiguration name="$l10n_sd_colour_brand" price="0" isDefault="true"/>
