@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <texts>
+        <text name="sd_shop_driveThrough" text="Pedana passante"/>
+        <text name="sd_shop_displayRamp" text="Rampa espositiva"/>
+        <text name="sd_shop_displayRampLarge" text="Rampa espositiva grande"/>
+        <text name="sd_shop_productRamp" text="Rampa salto prodotto"/>
+        <text name="sd_shop_turntable" text="Piattaforma girevole"/>
+        <text name="sd_function_display" text="Un espositore su cui parcheggiare una macchina e metterla in mostra."/>
+        <text name="sd_function_turntable" text="Il disco gira lentamente: lasciaci una macchina e girerà con esso, con tutto ciò che è agganciato."/>
+    </texts>
+</l10n>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <texts>
+        <text name="sd_shop_driveThrough" text="通行展台"/>
+        <text name="sd_shop_displayRamp" text="展示坡台"/>
+        <text name="sd_shop_displayRampLarge" text="大型展示坡台"/>
+        <text name="sd_shop_productRamp" text="產品障礙坡台"/>
+        <text name="sd_shop_turntable" text="旋轉展台"/>
+        <text name="sd_function_display" text="可停放機器進行展示的展台。"/>
+        <text name="sd_function_turntable" text="轉盤緩慢旋轉：把機器停在上面，它會連同掛接的農具一起隨轉盤轉動。"/>
+    </texts>
+</l10n>
