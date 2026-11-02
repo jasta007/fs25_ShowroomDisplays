@@ -187,6 +187,7 @@ local function hold(entry, vehicle)
         table.insert(helpers, { node = node, helper = helper })
     end
     helpers.locked = lockedOn(entry, vehicle)
+    if helpers.locked and SdDisplays ~= nil and SdDisplays.guard ~= nil then SdDisplays.guard(vehicle) end
     entry.held[vehicle] = helpers
 end
 
@@ -305,7 +306,7 @@ local function takeHits(entry)
     end
     local after = 0
     for _ in pairs(entry.props) do after = after + 1 end
-    if after == before then
+    if after == 0 and count > 0 and (entry.propTries or 0) >= SdTurntable.PROP_TRIES then
         Log:info("turntable: %d shapes over the disc, none of them a model", count)
     end
 end

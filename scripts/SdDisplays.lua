@@ -384,6 +384,31 @@ local function wake(vehicle)
 end
 
 
+--- Keep players out of a locked machine. The game copies a vehicle type's functions into each
+--- machine, so this wraps the machine's own: no "enter" prompt (the walk-up prompt comes from
+--- getDistanceToNode, not getIsEnterable) and no entering from the vehicle list.
+function SdDisplays.guard(vehicle)
+    if vehicle.sdGuarded or vehicle.spec_enterable == nil then return end
+    vehicle.sdGuarded = true
+    for _, name in ipairs({ "getIsEnterable", "getIsEnterableFromMenu" }) do
+        local original = vehicle[name]
+        if type(original) == "function" then
+            vehicle[name] = function(self, ...)
+                if SdDisplays.isLocked(self) then return false end
+                return original(self, ...)
+            end
+        end
+    end
+    local distance = vehicle.getDistanceToNode
+    if type(distance) == "function" then
+        vehicle.getDistanceToNode = function(self, ...)
+            if SdDisplays.isLocked(self) then return math.huge end
+            return distance(self, ...)
+        end
+    end
+end
+
+
 function SdDisplays.update()
     local now = g_time or 0
     if g_currentMission ~= nil and g_currentMission.showroomDisplays == nil then g_currentMission.showroomDisplays = SdDisplays.api end
@@ -408,6 +433,7 @@ function SdDisplays.update()
         end
     end
     SdDisplays.locked = locked
+    for vehicle in pairs(locked) do SdDisplays.guard(vehicle) end
     -- the shop's preview while placing one
     local gui = g_gui ~= nil and g_gui.currentGui or nil
     local target = gui ~= nil and gui.target or nil
