@@ -291,12 +291,13 @@ local function takeHits(entry)
             local x, y, z = getWorldTranslation(model)
             local qx, qy, qz, qw = getWorldQuaternion(model)
             local prop = { parent = getParent(model), bodies = {} }
-            link(entry.disc, model)
-            setWorldTranslation(model, x, y, z)
-            setWorldQuaternion(model, qx, qy, qz, qw)
+            -- kinematic first: moving a static body makes the physics complain ("Static actor moved")
             if RigidBodyType ~= nil then
                 setSubtreeBodies(model, RigidBodyType.STATIC, RigidBodyType.KINEMATIC, prop.bodies)
             end
+            link(entry.disc, model)
+            setWorldTranslation(model, x, y, z)
+            setWorldQuaternion(model, qx, qy, qz, qw)
             local brand = SdTurntable.brandHints[model]
             if brand == nil and getUserAttribute ~= nil then brand = getUserAttribute(model, SdTurntable.BRAND_ATTRIBUTE) end
             prop.brand = type(brand) == "string" and brand ~= "" and string.upper(brand) or nil
