@@ -5,7 +5,7 @@ from PIL import Image, ImageDraw, ImageFilter
 """The mod icon: a red tractor on the turntable, 512x512 with no mips (GIANTS TestRunner).
 Run from the repo root: python3 art/source/mod_icon.py"""
 import os
-from eqdds import save_bc7
+from eqdds import save_dxt1_flat
 yaws=[-155]
 def flip(m):
     o=xc.Mesh(); o.verts=[(p,n,(uv[0],1-uv[1])) for p,n,uv in m.verts]; o.tris=list(m.tris); return o
@@ -95,6 +95,6 @@ for yaw in yaws:
     can=logotype(can)
     can=sign(can)
     can=can.convert("RGB")
-    save_bc7(can, "icon_ShowroomDisplays.dds")
+    save_dxt1_flat(can, "icon_ShowroomDisplays.dds")
     os.makedirs("art/previews", exist_ok=True)
     can.save("art/previews/icon_ShowroomDisplays.png")
