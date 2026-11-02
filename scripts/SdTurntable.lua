@@ -41,6 +41,8 @@ SdTurntable.SCAN_MS = 2000
 
 SdTurntable.SYNC_MS = 3000
 SdTurntable.PROP_TRIES = 5
+SdTurntable.BRAND_ATTRIBUTE = "showroomBrand"   -- a model's brand name, as the game knows it ("CASEIH")
+SdTurntable.brandHints = {}   -- model node -> brand name (the console's test copies)
 SdTurntable.PROP_HEIGHT = 4.0      -- metres above the disc a model may reach
 SdTurntable.MODEL_ATTRIBUTE = "showroomModel"
 
@@ -291,6 +293,9 @@ local function takeHits(entry)
             if RigidBodyType ~= nil then
                 setSubtreeBodies(model, RigidBodyType.STATIC, RigidBodyType.KINEMATIC, prop.bodies)
             end
+            local brand = SdTurntable.brandHints[model]
+            if brand == nil and getUserAttribute ~= nil then brand = getUserAttribute(model, SdTurntable.BRAND_ATTRIBUTE) end
+            prop.brand = type(brand) == "string" and brand ~= "" and string.upper(brand) or nil
             entry.props[model] = prop
             Log:info("turntable: a model (%s) turns with the disc", tostring(getName(model)))
         end
@@ -323,6 +328,17 @@ local function grabProps(entry)
     overlapBox(cx, cy + SdTurntable.PROP_HEIGHT / 2 + 0.1, cz, 0, 0, 0, r, SdTurntable.PROP_HEIGHT / 2, r,
         "onOverlap", entry.overlap, 0xFFFFFFFF, false, true, true)
     takeHits(entry)
+end
+
+
+--- The brand of a model turning on this turntable, if it has one.
+function SdTurntable.modelBrandOn(placeable)
+    local entry = placeable ~= nil and SdTurntable.tables[placeable.rootNode] or nil
+    if entry == nil then return nil end
+    for _, prop in pairs(entry.props) do
+        if prop.brand ~= nil then return prop.brand end
+    end
+    return nil
 end
 
 
@@ -532,6 +548,6 @@ function SdTurntable.install()
     FSBaseMission.delete = Utils.prependedFunction(FSBaseMission.delete, function()
         SdLog.try("turntable release", SdTurntable.releaseAll)
         for _, entry in pairs(SdTurntable.tables) do SdLog.try("turntable models", releaseProps, entry) end
-        SdTurntable.tables, SdTurntable.scannedAt = {}, nil
+        SdTurntable.tables, SdTurntable.scannedAt, SdTurntable.brandHints = {}, nil, {}
     end)
 end

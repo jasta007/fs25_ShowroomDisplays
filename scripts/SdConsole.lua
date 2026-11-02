@@ -125,6 +125,7 @@ function SdConsole:testModel()
         addToPhysics(copy)
     end
     table.insert(SdConsole.models, node)
+    SdTurntable.brandHints[node] = SdBrands.of(vehicle)
     if entry ~= nil then entry.propTries = 0 end
     SdTurntable.scannedAt = nil
     return "Static copy of " .. tostring(vehicle.getName ~= nil and vehicle:getName() or vehicle.i3dFilename)

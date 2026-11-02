@@ -15,7 +15,7 @@
     from the game's own logo image; "eqBoardFace" shapes behind them go dark for a pale logo;
     "eqPaint" shapes take the Colour bought, or the brand's colour.
     The brand shown: another mod's choice (Realistic Equestrian's sponsor, see the API below), else
-    the brand of the machine on show, else a brand picked for that spot.
+    the brand of the machine on show (or of a map's model on a turntable), else a brand picked for that spot.
 
     API for other mods, on g_currentMission.showroomDisplays (set at mission load):
         isDisplay(placeable)          true for one of ours
@@ -270,6 +270,8 @@ function SdDisplays.brandOf(placeable)
         local brand = SdBrands.of(vehicle)
         if brand ~= nil then return brand end
     end
+    local modelBrand = SdTurntable ~= nil and SdTurntable.modelBrandOn ~= nil and SdTurntable.modelBrandOn(placeable) or nil
+    if modelBrand ~= nil then return modelBrand end
     local _, names = SdBrands.all()
     local x, _, z = getWorldTranslation(placeable.rootNode)
     return SdBrands.pick(names, x, z)
