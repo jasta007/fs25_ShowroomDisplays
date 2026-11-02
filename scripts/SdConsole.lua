@@ -112,7 +112,15 @@ function SdConsole:testModel()
         end
         for i = 0, getNumOfChildren(n) - 1 do makeStatic(getChildAt(n, i)) end
     end
+    -- a model is silent: drop the machine's sound emitters the copy brought along
+    local function silence(n)
+        for i = getNumOfChildren(n) - 1, 0, -1 do silence(getChildAt(n, i)) end
+        if getHasClassId ~= nil and ClassIds ~= nil and ClassIds.AUDIO_SOURCE ~= nil and getHasClassId(n, ClassIds.AUDIO_SOURCE) then
+            delete(n)
+        end
+    end
     for _, copy in ipairs(copies) do
+        silence(copy)
         makeStatic(copy)
         addToPhysics(copy)
     end
