@@ -16,7 +16,7 @@ SdBrands.OWN_COLOURS = {
     LIZARD = { 132, 189, 41 },
 }
 
--- Brands' colours when the game gives none: sRGB 0-255.
+-- Brands' main colours, used before the game's paints: sRGB 0-255.
 SdBrands.COLOURS = {
     FENDT = { 62, 122, 39 }, MASSEYFERGUSON = { 190, 22, 34 }, JOHNDEERE = { 54, 124, 43 },
     CASEIH = { 181, 18, 27 }, NEWHOLLAND = { 13, 77, 161 }, CLAAS = { 180, 198, 24 },
@@ -174,10 +174,12 @@ function SdBrands.colour(brand)
     if own ~= nil then
         colour = SdBrands.linear(own)
     else
-        local ok, paints = SdLog.try("brand paints", SdBrands.gamePaints)
-        if ok and type(paints) == "table" then colour = SdBrands.pickPaint(brand, paints) end
-        if colour == nil and SdBrands.COLOURS[string.upper(brand)] ~= nil then
+        -- our list first: a brand's paints can hold a brighter second colour (John Deere yellow)
+        if SdBrands.COLOURS[string.upper(brand)] ~= nil then
             colour = SdBrands.linear(SdBrands.COLOURS[string.upper(brand)])
+        else
+            local ok, paints = SdLog.try("brand paints", SdBrands.gamePaints)
+            if ok and type(paints) == "table" then colour = SdBrands.pickPaint(brand, paints) end
         end
     end
     SdBrands.cache[brand] = { colour = colour }
