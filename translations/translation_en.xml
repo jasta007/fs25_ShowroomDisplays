@@ -8,5 +8,28 @@
         <text name="sd_shop_turntable" text="Turntable"/>
         <text name="sd_function_display" text="A display stand to park a machine on and show it off."/>
         <text name="sd_function_turntable" text="The disc turns slowly: leave a machine on it and it turns with the disc, with anything hitched to it."/>
+        <text name="sd_config_colour" text="Colour"/>
+        <text name="sd_colour_brand" text="Brand colour"/>
+        <text name="sd_config_spin" text="Spin speed"/>
+        <text name="sd_spin_off" text="Off"/>
+        <text name="sd_spin_slow" text="Slow"/>
+        <text name="sd_spin_medium" text="Medium"/>
+        <text name="sd_spin_fast" text="Fast"/>
+        <text name="sd_colour_white" text="White"/>
+        <text name="sd_colour_cream" text="Cream"/>
+        <text name="sd_colour_red" text="Red"/>
+        <text name="sd_colour_burgundy" text="Burgundy"/>
+        <text name="sd_colour_orange" text="Orange"/>
+        <text name="sd_colour_yellow" text="Yellow"/>
+        <text name="sd_colour_lime" text="Lime"/>
+        <text name="sd_colour_green" text="Green"/>
+        <text name="sd_colour_darkGreen" text="Dark green"/>
+        <text name="sd_colour_skyBlue" text="Sky blue"/>
+        <text name="sd_colour_blue" text="Blue"/>
+        <text name="sd_colour_navy" text="Navy"/>
+        <text name="sd_colour_purple" text="Purple"/>
+        <text name="sd_colour_pink" text="Pink"/>
+        <text name="sd_colour_grey" text="Grey"/>
+        <text name="sd_colour_black" text="Black"/>
     </texts>
 </l10n>
