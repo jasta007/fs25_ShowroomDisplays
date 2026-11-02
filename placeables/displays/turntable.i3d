@@ -17,7 +17,7 @@
 
 
   <Materials>
-    <Material name="eqSponsor" materialId="8" specularColor="0.2 1 0" alphaBlending="true">
+    <Material name="eqSponsor" materialId="8" specularColor="0.2 0 0" alphaBlending="true">
       <Texture fileId="13"/>
     </Material>
     <Material name="plinthMetal" materialId="10" specularColor="0.6 1 0">
