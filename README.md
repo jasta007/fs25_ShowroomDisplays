@@ -1,6 +1,6 @@
 # Showroom Displays
 
-Vehicle Display stands for Farming Simulator 25: park a machine on top and it changes color and logo.
+Vehicle Display stands for Farming Simulator 25: park a machine on top and it changes color and logo. Turntables even spin!
 
 - Five different display ramps with customization options and automatic sponsor signs. Found in the shop under Decorations..
 
