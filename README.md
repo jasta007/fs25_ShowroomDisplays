@@ -1,11 +1,8 @@
 # Showroom Displays
 
-Display stands for Farming Simulator 25: park a machine on one and show it off. For farms, dealerships and map makers.
+Vehicle Display stands for Farming Simulator 25: park a machine on top and it changes color and logo. Turntables even spin!
 
-- Drive-through display, display ramp (small and large), platform display ramp (set two facing each other with a gap between), and turntables in two sizes.
-- The boards show the parked machine's brand. Colour, Finish (plaster, wood, dark metal) and Spin speed options.
-- Found in the shop under Decorations. Multiplayer ready.
-- Works on its own. With Realistic Equestrian installed, a sponsor's machine on a display counts towards your sponsor branding.
+- Six different display stands (two turntables) with Colour, Finish and Spin speed options and automatic brand signs. Found in the shop under Decorations.
 
 ## Map makers
 
