@@ -46,6 +46,39 @@ green=sj.flat(sj.COLOUR["green"])
 meshes=[(s["stone"], stone),(s["paint"],green),(s["white"],sj.flat(sj.WHITE)),(s["disc"], sj.flat((0.25,0.25,0.27))),
         (body,sj.flat((0.72,0.12,0.1))),(tyres,sj.flat((0.1,0.1,0.1))),(hubs,sj.flat((0.78,0.78,0.76))),(glass,sj.flat((0.45,0.6,0.7))),(black,sj.flat((0.12,0.12,0.12)))]
 meshes += [(flip(m), logo) for m in logos.values()]
+BOLD = "/usr/share/fonts/opentype/inter/Inter-ExtraBold.otf"
+MEDIUM = "/usr/share/fonts/opentype/inter/Inter-SemiBold.otf"
+SIG_FONT = "/usr/share/fonts/truetype/liberation/LiberationSerif-Italic.ttf"
+from PIL import ImageFont
+
+def spaced(d, cx, y, text, font, fill, tracking):
+    widths = [d.textlength(ch, font=font) for ch in text]
+    total = sum(widths) + tracking * (len(text) - 1)
+    x = cx - total / 2
+    for ch, w in zip(text, widths):
+        d.text((x, y), ch, font=font, fill=fill, anchor="ls")
+        x += w + tracking
+    return total
+
+def logotype(can):
+    """SHOWROOM over a green rule and DISPLAYS, at the top, with a soft shadow."""
+    layer = Image.new("RGBA", can.size, (0, 0, 0, 0)); d = ImageDraw.Draw(layer)
+    w = spaced(d, 256, 92, "SHOWROOM", ImageFont.truetype(BOLD, 66), (248, 248, 246, 255), 5)
+    green = (62, 158, 78, 255)
+    d.rectangle([256 - w / 2, 108, 256 + w / 2, 113], fill=green)
+    spaced(d, 256, 150, "DISPLAYS", ImageFont.truetype(MEDIUM, 34), (226, 232, 238, 255), 15)
+    shadow = Image.new("RGBA", can.size, (0, 0, 0, 0)); shadow.putalpha(layer.getchannel("A").point(lambda v: v * 0.6))
+    shadow = shadow.filter(ImageFilter.GaussianBlur(4))
+    can.alpha_composite(shadow, (0, 3)); can.alpha_composite(layer)
+    return can
+
+def sign(can):
+    """The maker's signature, small, bottom right like a painter's."""
+    layer = Image.new("RGBA", can.size, (0, 0, 0, 0)); d = ImageDraw.Draw(layer)
+    d.text((488, 494), "Jasta007", font=ImageFont.truetype(SIG_FONT, 19), fill=(150, 165, 180, 150), anchor="rs")
+    can.alpha_composite(layer.filter(ImageFilter.GaussianBlur(0.3)))
+    return can
+
 for yaw in yaws:
     img = xc.render(meshes, size=512, yaw=yaw, pitch=22)
     y,x=np.mgrid[0:512,0:512]
@@ -53,11 +86,14 @@ for yaw in yaws:
     t=np.clip(rr,0,1)[...,None]
     bg=np.array([70,90,110])*(1-t)+np.array([18,24,32])*t
     can=Image.fromarray(bg.astype(np.uint8)).convert("RGBA")
-    sm=img.resize((480,480),Image.LANCZOS)
+    M=450; mx, my = (512-M)//2, 96
+    sm=img.resize((M,M),Image.LANCZOS)
     a=np.asarray(sm)[...,3]
     sh=Image.fromarray((a*0.7).astype(np.uint8)).filter(ImageFilter.GaussianBlur(12))
-    shadow=Image.new("RGBA",(480,480),(0,0,0,255)); shadow.putalpha(sh)
-    can.alpha_composite(shadow,(16,30)); can.alpha_composite(sm,(16,22))
+    shadow=Image.new("RGBA",(M,M),(0,0,0,255)); shadow.putalpha(sh)
+    can.alpha_composite(shadow,(mx,my+8)); can.alpha_composite(sm,(mx,my))
+    can=logotype(can)
+    can=sign(can)
     can=can.convert("RGB")
     save_bc7(can, "icon_ShowroomDisplays.dds")
     os.makedirs("art/previews", exist_ok=True)
