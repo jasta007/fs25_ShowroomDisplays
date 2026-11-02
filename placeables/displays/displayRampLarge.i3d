@@ -16,8 +16,11 @@
 
 
   <Materials>
-    <Material name="eqSponsor" materialId="8" specularColor="0.2 1 0" alphaBlending="true">
+    <Material name="eqSponsor" materialId="8" specularColor="0.2 0 0" alphaBlending="true" customShaderId="3">
       <Texture fileId="11"/>
+      <Custommap name="detailSpecular" fileId="4"/>
+      <Custommap name="detailNormal" fileId="5"/>
+      <Custommap name="detailDiffuse" fileId="6"/>
     </Material>
     <Material name="plinthPaint" materialId="6" customShaderId="3">
       <Custommap name="detailSpecular" fileId="4"/>

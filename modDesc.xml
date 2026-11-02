@@ -15,6 +15,9 @@
     </description>
     <iconFilename>icon_ShowroomDisplays.dds</iconFilename>
     <multiplayer supported="true"/>
+    <extraSourceFiles>
+        <sourceFile filename="scripts/main.lua"/>
+    </extraSourceFiles>
     <storeItems>
         <storeItem xmlFilename="placeables/displays/driveThrough.xml"/>
         <storeItem xmlFilename="placeables/displays/displayRamp.xml"/>

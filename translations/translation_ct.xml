@@ -8,5 +8,28 @@
         <text name="sd_shop_turntable" text="旋轉展台"/>
         <text name="sd_function_display" text="可停放機器進行展示的展台。"/>
         <text name="sd_function_turntable" text="轉盤緩慢旋轉：把機器停在上面，它會連同掛接的農具一起隨轉盤轉動。"/>
+        <text name="sd_config_colour" text="顏色"/>
+        <text name="sd_colour_brand" text="品牌顏色"/>
+        <text name="sd_config_spin" text="旋轉速度"/>
+        <text name="sd_spin_off" text="關閉"/>
+        <text name="sd_spin_slow" text="慢"/>
+        <text name="sd_spin_medium" text="中"/>
+        <text name="sd_spin_fast" text="快"/>
+        <text name="sd_colour_white" text="白色"/>
+        <text name="sd_colour_cream" text="奶油色"/>
+        <text name="sd_colour_red" text="紅色"/>
+        <text name="sd_colour_burgundy" text="酒紅色"/>
+        <text name="sd_colour_orange" text="橙色"/>
+        <text name="sd_colour_yellow" text="黃色"/>
+        <text name="sd_colour_lime" text="青檸色"/>
+        <text name="sd_colour_green" text="綠色"/>
+        <text name="sd_colour_darkGreen" text="深綠色"/>
+        <text name="sd_colour_skyBlue" text="天藍色"/>
+        <text name="sd_colour_blue" text="藍色"/>
+        <text name="sd_colour_navy" text="海軍藍"/>
+        <text name="sd_colour_purple" text="紫色"/>
+        <text name="sd_colour_pink" text="粉紅色"/>
+        <text name="sd_colour_grey" text="灰色"/>
+        <text name="sd_colour_black" text="黑色"/>
     </texts>
 </l10n>

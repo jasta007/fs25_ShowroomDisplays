@@ -8,5 +8,28 @@
         <text name="sd_shop_turntable" text="Plataforma giratoria"/>
         <text name="sd_function_display" text="Un expositor para aparcar una máquina y lucirla."/>
         <text name="sd_function_turntable" text="El disco gira despacio: deja una máquina encima y girará con él, con todo lo enganchado."/>
+        <text name="sd_config_colour" text="Color"/>
+        <text name="sd_colour_brand" text="Color de la marca"/>
+        <text name="sd_config_spin" text="Velocidad de giro"/>
+        <text name="sd_spin_off" text="Apagado"/>
+        <text name="sd_spin_slow" text="Lenta"/>
+        <text name="sd_spin_medium" text="Media"/>
+        <text name="sd_spin_fast" text="Rápida"/>
+        <text name="sd_colour_white" text="Blanco"/>
+        <text name="sd_colour_cream" text="Crema"/>
+        <text name="sd_colour_red" text="Rojo"/>
+        <text name="sd_colour_burgundy" text="Burdeos"/>
+        <text name="sd_colour_orange" text="Naranja"/>
+        <text name="sd_colour_yellow" text="Amarillo"/>
+        <text name="sd_colour_lime" text="Lima"/>
+        <text name="sd_colour_green" text="Verde"/>
+        <text name="sd_colour_darkGreen" text="Verde oscuro"/>
+        <text name="sd_colour_skyBlue" text="Azul cielo"/>
+        <text name="sd_colour_blue" text="Azul"/>
+        <text name="sd_colour_navy" text="Azul marino"/>
+        <text name="sd_colour_purple" text="Morado"/>
+        <text name="sd_colour_pink" text="Rosa"/>
+        <text name="sd_colour_grey" text="Gris"/>
+        <text name="sd_colour_black" text="Negro"/>
     </texts>
 </l10n>

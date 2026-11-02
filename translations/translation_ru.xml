@@ -8,5 +8,28 @@
         <text name="sd_shop_turntable" text="Поворотный подиум"/>
         <text name="sd_function_display" text="Выставочный стенд: поставьте на него технику и покажите её."/>
         <text name="sd_function_turntable" text="Диск медленно вращается: оставьте на нём технику, и она будет вращаться вместе с ним со всем прицепленным."/>
+        <text name="sd_config_colour" text="Цвет"/>
+        <text name="sd_colour_brand" text="Цвет бренда"/>
+        <text name="sd_config_spin" text="Скорость вращения"/>
+        <text name="sd_spin_off" text="Выкл."/>
+        <text name="sd_spin_slow" text="Медленно"/>
+        <text name="sd_spin_medium" text="Средне"/>
+        <text name="sd_spin_fast" text="Быстро"/>
+        <text name="sd_colour_white" text="Белый"/>
+        <text name="sd_colour_cream" text="Кремовый"/>
+        <text name="sd_colour_red" text="Красный"/>
+        <text name="sd_colour_burgundy" text="Бордовый"/>
+        <text name="sd_colour_orange" text="Оранжевый"/>
+        <text name="sd_colour_yellow" text="Жёлтый"/>
+        <text name="sd_colour_lime" text="Лаймовый"/>
+        <text name="sd_colour_green" text="Зелёный"/>
+        <text name="sd_colour_darkGreen" text="Тёмно-зелёный"/>
+        <text name="sd_colour_skyBlue" text="Голубой"/>
+        <text name="sd_colour_blue" text="Синий"/>
+        <text name="sd_colour_navy" text="Тёмно-синий"/>
+        <text name="sd_colour_purple" text="Фиолетовый"/>
+        <text name="sd_colour_pink" text="Розовый"/>
+        <text name="sd_colour_grey" text="Серый"/>
+        <text name="sd_colour_black" text="Чёрный"/>
     </texts>
 </l10n>

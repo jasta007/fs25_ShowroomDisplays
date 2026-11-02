@@ -29,4 +29,35 @@
     <placement useRandomYRotation="false" useManualYRotation="true">
         <!-- Driven along z. -->
     </placement>
+
+    <sdColour>
+        <sdColourConfigurations>
+            <sdColourConfiguration name="$l10n_sd_colour_brand" price="0" isDefault="true"/>
+            <sdColourConfiguration name="$l10n_sd_colour_white" price="0"/>
+            <sdColourConfiguration name="$l10n_sd_colour_cream" price="0"/>
+            <sdColourConfiguration name="$l10n_sd_colour_red" price="0"/>
+            <sdColourConfiguration name="$l10n_sd_colour_burgundy" price="0"/>
+            <sdColourConfiguration name="$l10n_sd_colour_orange" price="0"/>
+            <sdColourConfiguration name="$l10n_sd_colour_yellow" price="0"/>
+            <sdColourConfiguration name="$l10n_sd_colour_lime" price="0"/>
+            <sdColourConfiguration name="$l10n_sd_colour_green" price="0"/>
+            <sdColourConfiguration name="$l10n_sd_colour_darkGreen" price="0"/>
+            <sdColourConfiguration name="$l10n_sd_colour_skyBlue" price="0"/>
+            <sdColourConfiguration name="$l10n_sd_colour_blue" price="0"/>
+            <sdColourConfiguration name="$l10n_sd_colour_navy" price="0"/>
+            <sdColourConfiguration name="$l10n_sd_colour_purple" price="0"/>
+            <sdColourConfiguration name="$l10n_sd_colour_pink" price="0"/>
+            <sdColourConfiguration name="$l10n_sd_colour_grey" price="0"/>
+            <sdColourConfiguration name="$l10n_sd_colour_black" price="0"/>
+        </sdColourConfigurations>
+    </sdColour>
+
+    <sdSpin>
+        <sdSpinConfigurations>
+            <sdSpinConfiguration name="$l10n_sd_spin_off" price="0"/>
+            <sdSpinConfiguration name="$l10n_sd_spin_slow" price="0" isDefault="true"/>
+            <sdSpinConfiguration name="$l10n_sd_spin_medium" price="0"/>
+            <sdSpinConfiguration name="$l10n_sd_spin_fast" price="0"/>
+        </sdSpinConfigurations>
+    </sdSpin>
 </placeable>

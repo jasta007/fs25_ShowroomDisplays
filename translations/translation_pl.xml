@@ -8,5 +8,28 @@
         <text name="sd_shop_turntable" text="Obrotowy podest"/>
         <text name="sd_function_display" text="Stoisko wystawowe, na którym zaparkujesz maszynę i ją zaprezentujesz."/>
         <text name="sd_function_turntable" text="Tarcza obraca się powoli: zostaw na niej maszynę, a obróci się razem z nią, z wszystkim, co podczepione."/>
+        <text name="sd_config_colour" text="Kolor"/>
+        <text name="sd_colour_brand" text="Kolor marki"/>
+        <text name="sd_config_spin" text="Prędkość obrotu"/>
+        <text name="sd_spin_off" text="Wył."/>
+        <text name="sd_spin_slow" text="Wolno"/>
+        <text name="sd_spin_medium" text="Średnio"/>
+        <text name="sd_spin_fast" text="Szybko"/>
+        <text name="sd_colour_white" text="Biały"/>
+        <text name="sd_colour_cream" text="Kremowy"/>
+        <text name="sd_colour_red" text="Czerwony"/>
+        <text name="sd_colour_burgundy" text="Bordowy"/>
+        <text name="sd_colour_orange" text="Pomarańczowy"/>
+        <text name="sd_colour_yellow" text="Żółty"/>
+        <text name="sd_colour_lime" text="Limonkowy"/>
+        <text name="sd_colour_green" text="Zielony"/>
+        <text name="sd_colour_darkGreen" text="Ciemnozielony"/>
+        <text name="sd_colour_skyBlue" text="Błękitny"/>
+        <text name="sd_colour_blue" text="Niebieski"/>
+        <text name="sd_colour_navy" text="Granatowy"/>
+        <text name="sd_colour_purple" text="Fioletowy"/>
+        <text name="sd_colour_pink" text="Różowy"/>
+        <text name="sd_colour_grey" text="Szary"/>
+        <text name="sd_colour_black" text="Czarny"/>
     </texts>
 </l10n>
