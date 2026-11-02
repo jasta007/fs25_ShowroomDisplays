@@ -16,7 +16,7 @@
 
 
   <Materials>
-    <Material name="eqSponsor" materialId="8" specularColor="0.2 0 0" alphaBlending="true" customShaderId="3">
+    <Material name="eqSponsor" materialId="8" specularColor="0.2 1 0" alphaBlending="true" customShaderId="3">
       <Texture fileId="11"/>
       <Custommap name="detailSpecular" fileId="4"/>
       <Custommap name="detailNormal" fileId="5"/>
@@ -48,14 +48,14 @@
   </Shapes>
 
   <Scene>
-    <TransformGroup name="plinthProductRamp" nodeId="18">
-      <Shape name="stone" shapeId="1" clipDistance="600" nodeId="19" castsShadows="true" receiveShadows="true" materialIds="5"/>
-      <Shape name="eqPaint" shapeId="2" clipDistance="600" nodeId="20" castsShadows="true" receiveShadows="true" materialIds="6"/>
-      <Shape name="eqBoardFace" shapeId="3" clipDistance="600" nodeId="21" castsShadows="true" receiveShadows="true" materialIds="7"/>
-      <Shape name="eqSponsor_1" shapeId="4" clipDistance="600" nodeId="22" castsShadows="false" receiveShadows="true" materialIds="8"/>
-      <Shape name="eqSponsor_1b" shapeId="5" clipDistance="600" nodeId="23" castsShadows="false" receiveShadows="true" materialIds="8"/>
-      <TransformGroup name="collision" nodeId="24">
-        <Shape name="col" shapeId="6" static="true" collisionFilterGroup="0x1037" collisionFilterMask="0xfffffbff" density="0.01" nodeId="25" castsShadows="false" receiveShadows="false" nonRenderable="true" materialIds="5"/>
+    <TransformGroup name="productRamp" nodeId="17">
+      <Shape name="stone" shapeId="1" clipDistance="600" nodeId="18" castsShadows="true" receiveShadows="true" materialIds="5"/>
+      <Shape name="eqPaint" shapeId="2" clipDistance="600" nodeId="19" castsShadows="true" receiveShadows="true" materialIds="6"/>
+      <Shape name="eqBoardFace" shapeId="3" clipDistance="600" nodeId="20" castsShadows="true" receiveShadows="true" materialIds="7"/>
+      <Shape name="eqSponsor_1" shapeId="4" clipDistance="600" nodeId="21" castsShadows="false" receiveShadows="true" materialIds="8"/>
+      <Shape name="eqSponsor_1b" shapeId="5" clipDistance="600" nodeId="22" castsShadows="false" receiveShadows="true" materialIds="8"/>
+      <TransformGroup name="collision" nodeId="23">
+        <Shape name="col" shapeId="1" static="true" collisionFilterGroup="0x1037" collisionFilterMask="0xfffffbff" density="0.01" nodeId="24" castsShadows="false" receiveShadows="false" nonRenderable="true" materialIds="5"/>
       </TransformGroup>
     </TransformGroup>
   </Scene>
