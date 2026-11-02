@@ -187,8 +187,13 @@ end
 
 
 --- @return boolean true for a display that came with the map (not bought by a player)
+SdDisplays.testMapPlaced = {}   -- placeable -> true: sdMapDisplay, to try a map's display in any save
+SdDisplays.locked = {}          -- vehicle -> true: on show on a display that came with the map
+
+
 function SdDisplays.isMapPlaced(placeable)
     if type(placeable) ~= "table" then return false end
+    if SdDisplays.testMapPlaced[placeable] then return true end
     if placeable.mapBoundId ~= nil then return true end
     if placeable.isPreplaced ~= nil then return placeable.isPreplaced == true end
     return false
@@ -384,13 +389,20 @@ function SdDisplays.update()
     end
     if SdDisplays.scannedAt ~= nil and now - SdDisplays.scannedAt < SdDisplays.SCAN_MS and now >= SdDisplays.scannedAt then return end
     SdDisplays.scannedAt = now
-    local seen = {}
+    local seen, locked = {}, {}
     for _, placeable in ipairs(placeables()) do
         if SdDisplays.isDisplay(placeable) then
             seen[placeable] = true
             SdLog.try("display look", SdDisplays.apply, placeable)
+            if SdDisplays.isMapPlaced(placeable) then
+                for _, vehicle in ipairs(SdDisplays.parked(placeable)) do
+                    local farmId = vehicle.getOwnerFarmId ~= nil and vehicle:getOwnerFarmId() or nil
+                    if SdTurntable == nil or not SdTurntable.isPlayerFarm(farmId) then locked[vehicle] = true end
+                end
+            end
         end
     end
+    SdDisplays.locked = locked
     -- the shop's preview while placing one
     local gui = g_gui ~= nil and g_gui.currentGui or nil
     local target = gui ~= nil and gui.target or nil
@@ -408,6 +420,16 @@ function SdDisplays.update()
 end
 
 
+--- @return boolean whether nobody may get into the machine: it is on show on a display that came
+--- with the map and belongs to no player's farm
+function SdDisplays.isLocked(vehicle)
+    if vehicle == nil then return false end
+    local root = vehicle.rootVehicle or vehicle
+    if SdDisplays.locked[vehicle] or SdDisplays.locked[root] then return true end
+    return SdTurntable ~= nil and SdTurntable.isLocked(vehicle) or false
+end
+
+
 SdDisplays.api = {
     isDisplay = function(p) return SdDisplays.isDisplay(p) end,
     isMapPlaced = function(p) return SdDisplays.isMapPlaced(p) end,
@@ -415,6 +437,7 @@ SdDisplays.api = {
     brandOf = function(p) return SdDisplays.brandOf(p) end,
     setOverride = function(p, brand, colour) SdDisplays.setOverride(p, brand, colour) end,
     areasFor = function(filename) return SdDisplays.areasFor(filename) end,
+    isLocked = function(vehicle) return SdDisplays.isLocked(vehicle) end,
 }
 
 
@@ -447,5 +470,6 @@ function SdDisplays.install()
     end)
     FSBaseMission.delete = Utils.prependedFunction(FSBaseMission.delete, function()
         SdDisplays.state, SdDisplays.overrides, SdDisplays.waking, SdDisplays.scannedAt = {}, {}, {}, nil
+        SdDisplays.testMapPlaced, SdDisplays.locked = {}, {}
     end)
 end
