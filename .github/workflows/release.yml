@@ -1,0 +1,98 @@
+# Builds FS25_ShowroomDisplays.zip and uploads it to itch.io.
+#
+# Runs when a version tag is pushed (the tag must match modDesc.xml, e.g. v1.0.0.0 for
+# <version>1.0.0.0</version>), or by hand from the Actions tab (Run workflow). Pushes to main
+# do not publish, so unfinished work never reaches the public page.
+#
+# Needs the repository secret BUTLER_API_KEY (an itch.io API key). Secrets are per repository,
+# so the one in FS25_RealisticEquestrian is not visible here.
+name: Release to itch.io
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: itch-release
+  cancel-in-progress: false
+
+env:
+  # itch.io page is https://jasta007.itch.io/<slug>. Override with the repository variable
+  # ITCH_PROJECT (Settings > Secrets and variables > Actions > Variables) if the slug differs.
+  ITCH_PROJECT: ${{ vars.ITCH_PROJECT || 'jasta007/showroom-displays' }}
+  ITCH_CHANNEL: fs25-mod
+  ZIP_NAME: FS25_ShowroomDisplays.zip
+  # Official butler build from itch.io's GitHub releases, checked against its checksum.
+  BUTLER_VERSION: v15.32.0
+  BUTLER_SHA256: 5db7b053fc9b578b86ffaf3520a12b952eb95c9225171cc5720dfbc9fe4574b3
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+
+      - name: Check the itch.io key is set
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+        run: |
+          if [ -z "$BUTLER_API_KEY" ]; then
+            echo "::error::Repository secret BUTLER_API_KEY is not set (Settings > Secrets and variables > Actions)"
+            exit 1
+          fi
+
+      - name: Read version from modDesc.xml
+        id: version
+        run: |
+          version=$(sed -n 's:.*<version>\(.*\)</version>.*:\1:p' modDesc.xml | head -n 1)
+          if [ -z "$version" ]; then
+            echo "::error::No <version> found in modDesc.xml"
+            exit 1
+          fi
+          if [ "$GITHUB_REF_TYPE" = "tag" ] && [ "$GITHUB_REF_NAME" != "v$version" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match modDesc.xml version $version (expected v$version)"
+            exit 1
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "Releasing version $version"
+
+      - name: Check Lua syntax
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq luajit
+          for f in $(git ls-files 'scripts/*.lua'); do luajit -bl "$f" > /dev/null || exit 1; done
+
+      - name: Build mod zip
+        run: |
+          mkdir dist
+          git archive -o "dist/$ZIP_NAME" HEAD modDesc.xml icon_ShowroomDisplays.dds placeables scripts translations
+          unzip -l "dist/$ZIP_NAME" | grep -q ' modDesc.xml$' || { echo "::error::modDesc.xml is not at the zip root"; exit 1; }
+          if unzip -l "dist/$ZIP_NAME" | grep -q ' art/'; then echo "::error::art/ is in the zip"; exit 1; fi
+          unzip -l "dist/$ZIP_NAME" | tail -n 1
+
+      - name: Keep the zip as a workflow artifact
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: ${{ env.ZIP_NAME }}
+          path: dist/${{ env.ZIP_NAME }}
+
+      - name: Install butler
+        run: |
+          curl -sSfL -o butler.zip "https://github.com/itchio/butler/releases/download/$BUTLER_VERSION/butler-linux-amd64.zip"
+          echo "$BUTLER_SHA256  butler.zip" | sha256sum -c -
+          unzip -q butler.zip -d "$RUNNER_TEMP/butler"
+          chmod +x "$RUNNER_TEMP/butler/linux-amd64/butler"
+          echo "$RUNNER_TEMP/butler/linux-amd64" >> "$GITHUB_PATH"
+
+      - name: Upload to itch.io
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+        run: |
+          butler -V
+          # Players need the zip itself in their mods folder, so push it as one file instead of
+          # letting butler unpack it.
+          butler push --no-auto-unzip dist "$ITCH_PROJECT:$ITCH_CHANNEL" --userversion "${{ steps.version.outputs.version }}"
