@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <modDesc descVersion="116">
     <author>Jasta007</author>
-    <version>1.0.0.1</version>
+    <version>1.0.0.2</version>
     <title>
         <en>Showroom Displays</en>
     </title>
@@ -39,8 +39,8 @@ Small Turntable
 Category: Decoration
 Price: $18,000
 
-Changelog 1.0.0.1:
-- Updated for the current FS25 mod format (descVersion 116)
+Changelog 1.0.0.2:
+- Ukrainian translation
 
 Made by Jasta007.]]></en>
         <de><![CDATA[Präsentationsstände für Ihre Maschinen, für Höfe, Händler und Karten.
@@ -76,8 +76,8 @@ Kleiner Drehteller
 Shopkategorie: Dekorationen
 Preis: 18.000€
 
-Changelog 1.0.0.1:
-- Auf das aktuelle FS25-Modformat aktualisiert (descVersion 116)
+Changelog 1.0.0.2:
+- Ukrainische Übersetzung
 
 Von Jasta007.]]></de>
     </description>

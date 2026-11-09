@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <texts>
+        <text name="sd_shop_driveThrough" text="Проїзний постамент"/>
+        <text name="sd_shop_displayRamp" text="Демонстраційна рампа"/>
+        <text name="sd_shop_displayRampLarge" text="Велика демонстраційна рампа"/>
+        <text name="sd_shop_productRamp" text="Демонстраційна рампа з платформою"/>
+        <text name="sd_shop_turntable" text="Поворотний диск"/>
+        <text name="sd_function_display" text="Демонстраційний стенд, щоб поставити на нього машину й показати її."/>
+        <text name="sd_function_turntable" text="Диск повільно обертається: залиште на ньому машину, і вона обертатиметься разом із диском, з усім причепленим."/>
+        <text name="sd_config_colour" text="Колір"/>
+        <text name="sd_colour_brand" text="Колір бренду"/>
+        <text name="sd_config_spin" text="Швидкість обертання"/>
+        <text name="sd_spin_off" text="Вимк."/>
+        <text name="sd_spin_slow" text="Повільно"/>
+        <text name="sd_spin_medium" text="Середньо"/>
+        <text name="sd_spin_fast" text="Швидко"/>
+        <text name="sd_colour_white" text="Білий"/>
+        <text name="sd_colour_cream" text="Кремовий"/>
+        <text name="sd_colour_red" text="Червоний"/>
+        <text name="sd_colour_burgundy" text="Бордовий"/>
+        <text name="sd_colour_orange" text="Помаранчевий"/>
+        <text name="sd_colour_yellow" text="Жовтий"/>
+        <text name="sd_colour_lime" text="Лаймовий"/>
+        <text name="sd_colour_green" text="Зелений"/>
+        <text name="sd_colour_darkGreen" text="Темно-зелений"/>
+        <text name="sd_colour_skyBlue" text="Блакитний"/>
+        <text name="sd_colour_blue" text="Синій"/>
+        <text name="sd_colour_navy" text="Темно-синій"/>
+        <text name="sd_colour_purple" text="Фіолетовий"/>
+        <text name="sd_colour_pink" text="Рожевий"/>
+        <text name="sd_colour_grey" text="Сірий"/>
+        <text name="sd_colour_black" text="Чорний"/>
+        <text name="sd_shop_turntableSmall" text="Малий поворотний диск"/>
+        <text name="sd_config_finish" text="Оздоблення"/>
+        <text name="sd_finish_plaster" text="Штукатурка"/>
+        <text name="sd_finish_wood" text="Дерево"/>
+        <text name="sd_finish_metal" text="Темний метал"/>
+    </texts>
+</l10n>
