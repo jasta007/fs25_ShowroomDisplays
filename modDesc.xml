@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <modDesc descVersion="116">
     <author>Jasta007</author>
-    <version>1.0.0.2</version>
+    <version>1.0.0.3</version>
     <title>
         <en>Showroom Displays</en>
     </title>
@@ -38,8 +38,10 @@ Small Turntable
 Category: Decoration
 Price: $18,000
 
-Changelog 1.0.0.2:
-- Ukrainian translation
+Changelog 1.0.0.3:
+- New shop icons rendered from the current models
+- New mod icon
+- Multiplayer support switched off until it has been tested in a full multiplayer session
 
 Made by Jasta007.]]></en>
         <de><![CDATA[Präsentationsstände für Ihre Maschinen, für Höfe, Händler und Karten.
@@ -74,8 +76,10 @@ Kleiner Drehteller
 Shopkategorie: Dekorationen
 Preis: 18.000€
 
-Changelog 1.0.0.2:
-- Ukrainische Übersetzung
+Changelog 1.0.0.3:
+- Neue Shop-Symbole, aus den aktuellen Modellen gerendert
+- Neues Mod-Symbol
+- Mehrspieler-Unterstützung abgeschaltet, bis sie in einer vollen Mehrspieler-Sitzung getestet wurde
 
 Von Jasta007.]]></de>
     </description>
