@@ -11,7 +11,6 @@
 - The boards show the brand of the machine on display, in that brand's colour
 - Options: Colour, Finish (plaster, wood or dark metal) and, for turntables, Spin speed
 - Turntables turn slowly with the machine on them
-- Multiplayer ready
 
 Map makers: displays placed with your map lock machines of no farm and turn static models on the turntable.
 
@@ -48,7 +47,6 @@ Made by Jasta007.]]></en>
 - Die Schilder zeigen die Marke der ausgestellten Maschine in ihrer Markenfarbe
 - Optionen: Farbe, Oberfläche (Putz, Holz oder dunkles Metall) und bei Drehtellern die Drehgeschwindigkeit
 - Drehteller drehen sich langsam mit der Maschine darauf
-- Mehrspielerfähig
 
 Kartenbauer: Mit der Karte platzierte Stände sperren Maschinen ohne Hof und drehen statische Modelle auf dem Drehteller.
 
@@ -82,7 +80,7 @@ Changelog 1.0.0.1:
 Von Jasta007.]]></de>
     </description>
     <iconFilename>icon_ShowroomDisplays.dds</iconFilename>
-    <multiplayer supported="true"/>
+    <multiplayer supported="false"/>
     <extraSourceFiles>
         <sourceFile filename="scripts/main.lua"/>
     </extraSourceFiles>
